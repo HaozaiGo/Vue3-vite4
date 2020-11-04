@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>会员中心</title>
+    <link rel="stylesheet" href="../Common/share.css">
+    <link rel="stylesheet" href="../Plugin/mescroll.min.css">
+    <style>
+        .consumeTime {
+            padding: 5px 8px;
+            flex: 1;
+        }
+        
+        .header {
+            padding: 5px 15px;
+            box-shadow: 0px 8px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .searchDiv {
+            flex: 2.5;
+        }
+        
+        .searchInput {
+            background-color: rgb(225, 225, 225);
+            color: gray;
+            border-radius: 12px;
+            padding: 4px 5px 4px 25px;
+            width: 100%;
+        }
+        
+        .mescroll {
+            position: fixed;
+            top: 44px;
+            bottom: 40px;
+            height: auto;
+            /*如设置bottom:50px,则需height:auto才能生效*/
+        }
+        
+        .listRow {
+            padding: 20px 15px;
+            border-bottom: 1px solid rgb(223, 223, 223);
+        }
+        
+        .listRowImg {
+            margin-right: 10px;
+        }
+        
+        .listRowImg img {
+            width: 50px;
+        }
+        
+        .listRowMsg {
+            flex: 3;
+        }
+        
+        .listRowMsg p {
+            color: grey;
+            font-size: 12px;
+        }
+        
+        .listRowDay {
+            flex: 1;
+            font-size: 12px;
+        }
+        
+        .listRowDay p:nth-child(1) {
+            margin-bottom: 5px;
+            color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <thead>
+        <div class="header flex">
+            <div class="consumeTime">按消费时间</div>
+            <div class="searchDiv">
+                <input class="searchInput" type="search" placeholder="请输入会员号、手机号" />
+            </div>
+        </div>
+    </thead>
+    <tbody>
+        <!-- 列表 -->
+        <div id="mescroll" class="mescroll">
+            <div>
+                <div class="listRow flex-c">
+                    <div class="listRowImg">
+                        <img src="../images/vip/Avatar.png" alt="">
+                    </div>
+                    <div class="listRowMsg">
+                        <div>ChenHei</div>
+                        <p>手机：189821098</p>
+                        <p>已消费：2次</p>
+                    </div>
+                    <div class="listRowDay">
+                        <p>27天前</p>
+                        <p>客单价：8</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </tbody>
+
+
+    <script src="../Plugin/mescroll.min.js"></script>
+    <script src="../Plugin/jquery-2.1.4.min.js"></script>
+    <script>
+        let mescroll = new MeScroll('mescroll', {
+            down: {
+                callback: downCallback
+            },
+            up: {
+                callback: upCallback,
+                page: {
+                    num: 0, //当前页 默认0,回调之前会加1; 即callback(page)会从1开始
+                    size: 5 //每页数据条数,默认10
+                },
+            }
+        })
+
+        function downCallback() {
+            $.ajax({
+                url: 'http://10.50.2.116/index.php/mobile/admin/select_member',
+                type: "POST",
+                dataType: "jsonp",
+                jsonp: 'callback', // callback的函数名 
+                jsonpCallback: "callback_adservice",
+                data: {},
+                success: function(data) {
+                    console.log(data)
+                }
+            })
+
+        }
+
+        function upCallback() {
+            mescroll.endSuccess(2)
+        }
+    </script>
+</body>
+
+</html>
