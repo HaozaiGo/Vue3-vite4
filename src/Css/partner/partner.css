@@ -1,0 +1,102 @@
+html,
+body {
+    /* position: relative; */
+    height: 100%;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    height: 58px !important;
+    width: 58px !important;
+    border-radius: 50%;
+    background-color: #08B9FE;
+    /* Center slide text vertically */
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+}
+
+.bgBlue {
+    background-color: #08B9FE;
+    height: 18vh;
+}
+
+.swiper-slide div {
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 3px;
+    width: 52px;
+    height: 52px;
+    position: relative;
+}
+
+.swiper-slide div img {
+    width: 34px;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    /* margin: 0 auto; */
+}
+
+.swiper-wrapper {
+    align-items: center;
+}
+
+.introduced {
+    text-align: center;
+}
+
+.introduced p {
+    padding: 10px 0px;
+}
+
+.introduced p span img {
+    width: 51px;
+    vertical-align: middle;
+}
+
+.active {
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    margin-top: -7px !important;
+    margin: 0px auto;
+    transform: rotate(135deg);
+}
+
+@media(max-width:375px) {
+    .swiper-slide {
+        margin-right: 22.5px !important;
+    }
+}
+
+@media(max-width:320px) {
+    .swiper-slide {
+        margin-right: 10.5px !important;
+    }
+}
+
+
+/* 兼容GaS5 */
+
+@media(min-width:321px) and (max-width:360px) {
+    .swiper-slide {
+        margin-right: 19px !important;
+    }
+}
+
+
+/* 兼容pixel2 */
+
+@media(min-width:411px) and (max-width:413px) {
+    .swiper-slide {
+        margin-right: 30px !important;
+    }
+}

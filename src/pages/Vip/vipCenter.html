@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>会员中心</title>
+    <link rel="stylesheet" href="../Css/vip/vipCenter.css">
+</head>
+
+<body>
+    <thead>
+        <div class="header flex">
+            <div class="consumeTime">按消费时间</div>
+            <div class="searchDiv">
+                <input class="searchInput" type="search" placeholder="请输入会员号、手机号" />
+            </div>
+        </div>
+    </thead>
+    <tbody>
+        <!-- 列表 -->
+        <div id="mescroll" class="mescroll">
+            <!-- 下面这个div不能删 -->
+            <div>
+                <div class="listRow flex-c">
+                    <div class="listRowImg">
+                        <img src="../images/vip/Avatar.png" alt="">
+                    </div>
+                    <div class="listRowMsg">
+                        <div>ChenHei <img src="../images/vip/male.png" alt=""></div>
+                        <p>手机：189821098</p>
+                        <p>已消费：2次</p>
+                    </div>
+                    <div class="listRowDay">
+                        <p>27天前</p>
+                        <p>客单价：8</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 添加会员 -->
+        <div class="addVip">
+            <button>+</button>
+        </div>
+    </tbody>
+
+    <script src="../Plugin/jquery-3.5.1.js"></script>
+    <script src="../Plugin/mescroll.min.js"></script>
+    <script src="../../dist/bundle.js"></script>
+    <script>
+        let mescroll = new MeScroll('mescroll', {
+            down: {
+                callback: downCallback
+            },
+            up: {
+                callback: upCallback,
+                page: {
+                    num: 0, //当前页 默认0,回调之前会加1; 即callback(page)会从1开始
+                    size: 5 //每页数据条数,默认10
+                },
+            }
+        })
+
+        function downCallback() {
+            $.ajax({
+                url: 'http://10.50.2.116/index.php/mobile/admin/select_member',
+                success: function(data) {
+                    console.log(data)
+                }
+            })
+
+        }
+
+        function upCallback() {
+            mescroll.endSuccess(2)
+        }
+
+        $('.addVip').click(function(params) {
+            window.location.href = 'addVip.html'
+        })
+    </script>
+</body>
+
+</html>
