@@ -1,0 +1,33 @@
+.today-content {
+    padding: 15px 10px;
+}
+
+.totalCollection {
+    padding: 13px 11px;
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+.totalCollection span {
+    color: #FEA116;
+}
+
+.chooseIdentity {}
+
+.chooseIdentity div {
+    width: 20vw;
+    padding-top: 22px;
+    padding-bottom: 8px;
+    text-align: center;
+}
+
+.active {
+    color: #08B9FE;
+    border-bottom: 1px solid #08B9FE;
+    font-weight: 550;
+}
+
+.switchBox {
+    background: #F4F2FB;
+    padding: 5px 10px;
+    padding-bottom: 20px;
+}

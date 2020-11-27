@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>一号店</title>
+    <link rel="stylesheet" href="../../Css/index/index.css">
+</head>
+
+<body>
+    <thead>
+        <div class="blueBg">
+        </div>
+        <!-- 收银台 -->
+        <div class="cashRegister">
+            <div class="cashRegisterTitle"><img src="../../images/index/money.png" alt="" style="width:15px;margin-right: 5px;"> <text>收银台</text> </div>
+            <div class="cashRegister-row1 flex-sr">
+                <div>
+                    <span>0.00</span>
+                    <div>今日收款</div>
+                </div>
+                <div>
+                    <span>0.00</span>
+                    <div>今日开单</div>
+                </div>
+                <div>
+                    <span>0</span>
+                    <div>会员新增</div>
+                </div>
+            </div>
+            <div class="cashRegister-row2 flex-sb">
+                <div>
+                    <img src="../../images/index/girl.png" alt="">
+                    <span>女散客</span>
+                </div>
+                <div>
+                    <img src="../../images/index/boy.png" alt="">
+                    <span>男散客</span>
+                </div>
+                <div>
+                    <img src="../../images/index/vip.png" alt="">
+                    <span>会员开单</span>
+                </div>
+            </div>
+        </div>
+
+    </thead>
+    <tbody>
+        <div class="indexContent">
+            <!-- 我的应用 -->
+            <div>
+                <div class="myApplication">
+                    我的应用
+                </div>
+                <div class="everyApplication flex-sr">
+                    <div>
+                        <img src="../../images/index/list.png" alt="">
+                        <span>流水</span>
+                    </div>
+                    <div>
+                        <img src="../../images/index/inventory.png" alt="">
+                        <span>商品管理</span>
+                    </div>
+                    <div>
+                        <img src="../../images/index/checkPeo.png" alt="">
+                        <span>员工管理</span>
+                    </div>
+                    <div>
+                        <img src="../../images/index/myVip.png" alt="">
+                        <span>会员生日</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 个人数据 -->
+            <div>
+                <div class="myApplication">
+                    个人数据
+                </div>
+                <div class="personalData">
+                    <div>
+                        <div class="delStyle">总业绩<br><span>¥10000</span> </div>
+                        <img src="../../images/index/decoration.png" alt="">
+                    </div>
+                    <div>
+                        <div class="delStyle">预约单数 <br> <span>15</span></div>
+                        <img src="../../images/index/decoration.png" alt=""></div>
+
+                    <div>
+                        <div class="delStyle">开卡充值金额<br> <span>¥1000 </span> </div>
+                        <img src="../../images/index/decoration.png" alt=""></div>
+
+                    <div>
+                        <div class="delStyle">成交总客数（人）<br> <span> 60</span> </div>
+                        <img src="../../images/index/decoration.png" alt=""></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- 店铺经营数据 -->
+        <div class="space">
+            <div class="myApplication ">
+                店铺经营数据
+            </div>
+            <!-- 日报切换 -->
+            <div class="swiperChangeBg">
+                <div class="swiperChange flex-sr">
+                    <div class="swiperChangeActive">今日</div>
+                    <div>周报</div>
+                    <div>月报</div>
+                </div>
+            </div>
+            <div class="personalData shopData">
+                <div>
+                    <div class="delStyle">新增会员数<br> <span>20</span></div>
+
+                </div>
+                <div>
+                    <div class="delStyle">成交客户数 <br> <span>200</span></div>
+                </div>
+                <div>
+                    <div class="delStyle">开单充值客户数<br> <span>30</span> </div>
+                </div>
+
+                <div>
+                    <div class="delStyle">预约单数<br> <span>20</span> </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+    </tbody>
+
+
+    <script src="../../Plugin/jquery-3.5.1.js"></script>
+    <script src="../../../dist/bundle.js"></script>
+    <script type="module">
+        import {swichBtn} from '../../Js/shareStyle.js'; swichBtn('.swiperChange div','swiperChangeActive');
+    </script>
+</body>
+
+</html>

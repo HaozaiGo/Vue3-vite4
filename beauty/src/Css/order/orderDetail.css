@@ -1,0 +1,54 @@
+.content {
+    padding: 15px 10px;
+    background: #F4F2FB;
+    padding-bottom: 80px;
+}
+
+.orderHead {
+    padding: 15px 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding-bottom: 5px;
+}
+
+.withdrawalOrders {
+    background: #08B9FE;
+    border-radius: 13px;
+    padding: 4px 22px;
+    color: #ffffff;
+}
+
+.orderHeadTitle {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+p span {
+    color: #808080;
+    font-size: 13px;
+}
+
+.preferential {
+    color: #FEA116 !important;
+    margin-left: 16vw;
+}
+
+.payWay {
+    padding: 10px 0px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.orderBody {
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 5px 12px;
+    background-color: #ffffff;
+}
+
+.bottom {
+    background: transparent !important;
+}
+
+.bottom a {
+    width: 45vw;
+}

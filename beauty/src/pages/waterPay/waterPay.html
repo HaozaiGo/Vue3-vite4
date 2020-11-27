@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>流水</title>
+    <link rel="stylesheet" href="../../Css/waterPay/waterPay.css">
+</head>
+
+<body>
+    <thead>
+        <!-- 日历 -->
+        <div class="time-wrap">
+            <!-- 上方日期 -->
+            <div class="week-wrap van-swipe">
+                <div class="week-days" id="dayScroll">
+                    <div class="rowday">
+                        <table id="daysList" cellspacing="">
+                            <tr class="week-bar">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="changeDay">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 今日流水 -->
+        <div class="todayWaterPay">
+            <!-- 总提示 -->
+            <div class="showWaterPay">
+                <div class="flex-sb">
+                    <div>
+                        今日总流水（元）
+                        <div><small>￥</small> <span class="strongTex"> 15462.00</span></div>
+                    </div>
+                    <div>今日订单量
+                        <div class="strongTex">153</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 项目item -->
+            <div class="projectItem">
+                <div class="Scatter-item flex rel">
+                    <div><img src="../../images/waterPay/projectImg.png" alt=""></div>
+                    <div class="Scatter-item-col2">
+                        <div>我是订单项目</div>
+                        <div>收款方式：微信支付</div>
+                        <div>订单时间：2020-11-12 13:50:23</div>
+                    </div>
+                    <div class="rightMoney">
+                        ￥500
+                    </div>
+                </div>
+
+                <div class="Scatter-item flex rel">
+                    <div><img src="../../images/waterPay/projectImg.png" alt=""></div>
+                    <div class="Scatter-item-col2">
+                        <div>我是订单项目</div>
+                        <div>收款方式：微信支付</div>
+                        <div>订单时间：2020-11-12 13:50:23</div>
+                    </div>
+                    <div class="rightMoney">
+                        ￥500
+                    </div>
+                </div>
+            </div>
+            <!-- 查看更多 -->
+            <a href="#" class="checkMore">查看更多</a>
+        </div>
+    </thead>
+    <tbody>
+        <div style="margin-top: 65px;">
+            <div class="blockSpace"></div>
+            <div class="dataList">
+                <div>
+                    数据报表
+                </div>
+                <!-- 日报切换 -->
+                <div class="swiperChangeBg">
+                    <div class="flex-sr swiperChange">
+                        <div class="swiperChangeActive" i='0'>总流水</div>
+                        <div i='1'>周流水</div>
+                        <div i='2'>本月流水</div>
+                    </div>
+                </div>
+                <div class="switchBox">
+                    <div id="0">
+                        <div class="waterPayCard flex-sb">
+                            <div>
+                                <p>总流水</p>
+                                <div>￥250000.00</div>
+                                <div style="margin-top: 10px;"> <span class="toNowData">2019年截至至今</span>
+                                </div>
+                            </div>
+                            <div class="rel">
+                                <canvas id="canvas" width='100' height="100"></canvas>
+                                <div class="orderNum">
+                                    100
+                                </div>
+                                <div style="text-align: center;">
+                                    订单量
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="Scatter-item flex rel">
+                            <div><img src="../../images/waterPay/projectImg.png" alt=""></div>
+                            <div class="Scatter-item-col2">
+                                <div>我是订单项目</div>
+                                <div>收款方式：微信支付</div>
+                                <div>订单时间：2020-11-12 13:50:23</div>
+                            </div>
+                            <div class="rightMoney">
+                                ￥500
+                            </div>
+                        </div>
+                    </div>
+                    <div id="1" class="hidden">
+                        111
+                    </div>
+                    <div id="2" class="hidden">
+                        222
+                    </div>
+                </div>
+
+                <!-- 查看更多 -->
+                <a href="#" class="checkMore">查看更多</a>
+            </div>
+        </div>
+
+    </tbody>
+
+
+    <script src="../../Plugin/jquery-3.5.1.js"></script>
+    <script src="../../../dist/bundle.js"></script>
+    <script src="../../Js/calendar.js"></script>
+    <script type="module">
+        import {swichBtn} from '../../Js/shareStyle.js'; import{ Circle, Ring } from '../../Js/circle.js';swichBtn('.swiperChange div','swiperChangeActive'); let orderTotal = $('.orderNum').text(); let setOrderTotal = 200; let ringPercent = Math.round((orderTotal/200)*100);
+        var canvas = document.getElementById('canvas'); var ctx = canvas.getContext('2d'); var ring = new Ring(180,ringPercent); ring.drawRing(ctx)
+
+    </script>
+
+</body>
+
+</html>
