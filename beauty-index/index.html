@@ -6,9 +6,11 @@
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
     <title>美智盈</title>
     <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/index.css">
     <style>
         html,
         body {
+            font-size: 100px;
             position: relative;
             height: 100%;
             margin: 0;
@@ -24,7 +26,6 @@
         
         .swiper-slide {
             text-align: center;
-            font-size: 18px;
             background: #fff;
             /* Center slide text vertically */
             display: -webkit-box;
@@ -40,23 +41,216 @@
             -webkit-align-items: center;
             align-items: center;
         }
+        
+        .banner-img {
+            height: 100%;
+            width: 100%;
+            background-size: 100% 100%;
+            background-image: url('./images/banner.png');
+        }
+        
+        .index-bg {
+            height: 100%;
+            width: 100%;
+            background-size: 100% 100%;
+        }
+        
+        .slide-0 {
+            background: url('./images/background0.png');
+        }
+        
+        .introduceTxt {
+            color: #fff;
+            height: 15vh;
+            text-align: start;
+        }
+        
+        .introduceTxt p {
+            opacity: 0.15;
+            font-size: .66rem;
+        }
+        
+        .introduceTxt div {
+            font-size: .42rem;
+            margin-top: -0.4rem;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .blueIntroduce {
+            font-size: .16rem;
+            color: #fff;
+            background: #21C1FF;
+            padding: .16rem;
+        }
+        
+        .idx0-P {
+            font-size: .17rem;
+            color: #fff;
+            margin: 4vh 0;
+            text-align: start;
+        }
+        
+        .spanLine1 {
+            display: block;
+        }
+        
+        .spanLine2 {
+            text-align: right;
+            display: block;
+        }
+        
+        .idx0-1 {
+            background: url('./images/idx0-1.png');
+            background-size: 100% 100%;
+            margin-left: 5vw;
+        }
+        
+        .slide-1 {
+            background: url('./images/background1.png');
+        }
+        
+        .slide-2 {
+            background: url('./images/background2.png');
+        }
+        
+        .slide-3 {
+            background: url('./images/background3.png');
+        }
+        /* iphone */
+        
+        @media(min-width: 480px) {}
+        /* ipad */
+        
+        @media(min-width: 768px) {
+            .rowContent {
+                padding: 12vh 12vw;
+                height: 100%;
+            }
+        }
+        /* laptop */
+        
+        @media(min-width: 992px) {
+            .rowContent {
+                padding: 12vh 12vw;
+                height: 100%;
+            }
+        }
+        /* 大Pc */
+        
+        @media(min-width: 1200px) {
+            .rowContent {
+                padding: 16vh 16vw;
+                height: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
     <!-- Swiper -->
-    <div class="swiper-container">
+    <div class="swiper-container" id="swiperContent">
         <div class="swiper-wrapper">
+            <!-- 首屏轮播图 -->
             <div class="swiper-slide">
-                Slide 1
-
-
+                <!-- Swiper -->
+                <div class="swiper-container" id="swiper-line">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="banner-img">
+                            </div>
+                            <!-- <div>
+                                <img src="./images/banner.png" alt="">
+                            </div> -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="banner-img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">Slide 3</div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
 
             </div>
-            <div class="swiper-slide">Slide 2</div>
-            <div class="swiper-slide">Slide 3</div>
-            <div class="swiper-slide">Slide 4</div>
-            <div class="swiper-slide">Slide 5</div>
+            <!-- 页码0 -->
+            <div class="swiper-slide">
+                <div class="slide-0 index-bg">
+                    <div class="rowContent">
+                        <div class="introduceTxt col-lg-12 col-12">
+                            <p>PROJECT INTRODUCTION</p>
+                            <div>一套帮你智能运营和拓客的工具</div>
+                        </div>
+                        <div class="flex">
+                            <div class="col-lg-4 col-12">
+                                <div class="blueIntroduce">美业门店必备的全功能美业门店智能管理平台</div>
+                                <p class="idx0-P">
+                                    让门店高度信息化解决门店运营 管理等问题 开发团队均拥有丰富的系统开发经验亦有多 年国际化管理经验
+                                </p>
+                                <img src="./images/idx0-0.png" alt="">
+                            </div>
+                            <div class="idx0-1 col-lg-7 col-12">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 页码1 -->
+            <div class="swiper-slide">
+                <div class="slide-1 index-bg">
+                    <div class="rowContent">
+                        <div class="introduceTxt col-lg-12 col-12" style="height: 9vh;">
+                            <div>多渠道精准拓客</div>
+                            <p style="margin-top: -.5rem;margin-left: 1rem;">MARKETING</p>
+                        </div>
+                        <div class="idx0-P">
+                            <p>链接微信百亿流量大平台，源源不断获取新客</p>
+                            <p>优惠券、拼团、短信营销、场景营销等强大功能，拓客快准省</p>
+                        </div>
+                        <div style="padding-left: 18vw;">
+                            <img src="./images/idx1-1.png" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- 页码2 -->
+            <div class="swiper-slide">
+                <div class="slide-2 index-bg">
+                    <div class="rowContent">
+                        <div class="introduceTxt col-lg-12 col-12" style="height: 11vh;">
+                            <div>开单收银 流水明细 简单高效</div>
+                            <p style="margin-top: -.4rem;margin-left: .6rem;">EFFICIENT</p>
+                        </div>
+                        <div class="idx0-P" style="margin-bottom: 12vh;">
+                            <p>电脑、手机多端使用，支持微信、支付宝、储卡、团购验券现金等多种支付方式只需两</p>
+                            <p>步，即可快速将纸质单录为电子单,还可链接数码打印机将单据及时打印</p>
+                        </div>
+                        <div class="flex col-lg-12">
+                            <img src="./images/idx2-0.png" alt="" class="col-lg-4">
+                            <img src="./images/idx2-1.png" alt="" class="col-lg-4">
+                            <img src="./images/idx2-2.png" alt="" class="col-lg-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 页码3 -->
+            <div class="swiper-slide">
+                <div class="slide-3 index-bg">
+                    <div class="rowContent">
+                        <div class="introduceTxt col-lg-12 col-12 fr" style="height: 11vh;">
+                            <div>
+                                <span class="spanLine1">经营数据分析</span>
+                                <span class="spanLine2">决策有理有据</span>
+                            </div>
+                            <p style="margin-top: -.4rem;margin-left: .6rem;">AUTOMATION</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="swiper-slide">Slide 6</div>
             <div class="swiper-slide">Slide 7</div>
             <div class="swiper-slide">Slide 8</div>
@@ -69,14 +263,20 @@
     <!-- Swiper JS -->
     <script src="./js/swiper.min.js"></script>
     <script>
-        var swiper = new Swiper('.swiper-container', {
+        var swiper = new Swiper('#swiperContent', {
             direction: 'vertical',
             slidesPerView: 1,
-            spaceBetween: 30,
+            spaceBetween: 0,
             mousewheel: true,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
+            },
+        });
+        var swiper2 = new Swiper('#swiper-line', {
+            slidesPerView: 1,
+            pagination: {
+                el: '.swiper-pagination',
             },
         });
     </script>
