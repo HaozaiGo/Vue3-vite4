@@ -7,146 +7,7 @@
     <title>美智盈</title>
     <link rel="stylesheet" href="./css/swiper.min.css">
     <link rel="stylesheet" href="./css/index.css">
-    <style>
-        html,
-        body {
-            font-size: 100px;
-            position: relative;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .swiper-slide {
-            text-align: center;
-            background: #fff;
-            /* Center slide text vertically */
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            -webkit-align-items: center;
-            align-items: center;
-        }
-        
-        .banner-img {
-            height: 100%;
-            width: 100%;
-            background-size: 100% 100%;
-            background-image: url('./images/banner.png');
-        }
-        
-        .index-bg {
-            height: 100%;
-            width: 100%;
-            background-size: 100% 100%;
-        }
-        
-        .slide-0 {
-            background: url('./images/background0.png');
-        }
-        
-        .introduceTxt {
-            color: #fff;
-            height: 15vh;
-            text-align: start;
-        }
-        
-        .introduceTxt p {
-            opacity: 0.15;
-            font-size: .66rem;
-        }
-        
-        .introduceTxt div {
-            font-size: .42rem;
-            margin-top: -0.4rem;
-        }
-        
-        .flex {
-            display: flex;
-        }
-        
-        .blueIntroduce {
-            font-size: .16rem;
-            color: #fff;
-            background: #21C1FF;
-            padding: .16rem;
-        }
-        
-        .idx0-P {
-            font-size: .17rem;
-            color: #fff;
-            margin: 4vh 0;
-            text-align: start;
-        }
-        
-        .spanLine1 {
-            display: block;
-        }
-        
-        .spanLine2 {
-            text-align: right;
-            display: block;
-        }
-        
-        .idx0-1 {
-            background: url('./images/idx0-1.png');
-            background-size: 100% 100%;
-            margin-left: 5vw;
-        }
-        
-        .slide-1 {
-            background: url('./images/background1.png');
-        }
-        
-        .slide-2 {
-            background: url('./images/background2.png');
-        }
-        
-        .slide-3 {
-            background: url('./images/background3.png');
-        }
-        /* iphone */
-        
-        @media(min-width: 480px) {}
-        /* ipad */
-        
-        @media(min-width: 768px) {
-            .rowContent {
-                padding: 12vh 12vw;
-                height: 100%;
-            }
-        }
-        /* laptop */
-        
-        @media(min-width: 992px) {
-            .rowContent {
-                padding: 12vh 12vw;
-                height: 100%;
-            }
-        }
-        /* 大Pc */
-        
-        @media(min-width: 1200px) {
-            .rowContent {
-                padding: 16vh 16vw;
-                height: 100%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./css/myIndex.css">
 </head>
 
 <body>
@@ -180,20 +41,23 @@
                 <div class="slide-0 index-bg">
                     <div class="rowContent">
                         <div class="introduceTxt col-lg-12 col-12">
-                            <p>PROJECT INTRODUCTION</p>
+                            <p class="oneP-1">PROJECT INTRODUCTION</p>
                             <div>一套帮你智能运营和拓客的工具</div>
                         </div>
-                        <div class="flex">
-                            <div class="col-lg-4 col-12">
-                                <div class="blueIntroduce">美业门店必备的全功能美业门店智能管理平台</div>
-                                <p class="idx0-P">
+                        <div class="flex lineHidden">
+                            <div class="col-lg-4 col-12 col-md-4">
+                                <div class="blueIntroduce oneP-1">美业门店必备的全功能美业门店智能管理平台</div>
+                                <p class="idx0-P oneP-3">
                                     让门店高度信息化解决门店运营 管理等问题 开发团队均拥有丰富的系统开发经验亦有多 年国际化管理经验
                                 </p>
                                 <img src="./images/idx0-0.png" alt="">
                             </div>
-                            <div class="idx0-1 col-lg-7 col-12">
-
+                            <div class="idx0-1 col-lg-7 col-12 col-md-7">
                             </div>
+                        </div>
+                        <!-- 页脚 -->
+                        <div class="pageFooter rel idx0-Foot">
+                            <p>BEAUTYSRP</p>
                         </div>
                     </div>
                 </div>
@@ -210,10 +74,13 @@
                             <p>链接微信百亿流量大平台，源源不断获取新客</p>
                             <p>优惠券、拼团、短信营销、场景营销等强大功能，拓客快准省</p>
                         </div>
-                        <div style="padding-left: 18vw;">
+                        <div class="idx1-1Position">
                             <img src="./images/idx1-1.png" alt="">
                         </div>
-
+                        <!-- 页脚 -->
+                        <div class="pageFooter rel idx1-Foot">
+                            <p>BEAUTYSRP</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -225,14 +92,18 @@
                             <div>开单收银 流水明细 简单高效</div>
                             <p style="margin-top: -.4rem;margin-left: .6rem;">EFFICIENT</p>
                         </div>
-                        <div class="idx0-P" style="margin-bottom: 12vh;">
+                        <div class="idx0-P idx0-Style">
                             <p>电脑、手机多端使用，支持微信、支付宝、储卡、团购验券现金等多种支付方式只需两</p>
                             <p>步，即可快速将纸质单录为电子单,还可链接数码打印机将单据及时打印</p>
                         </div>
-                        <div class="flex col-lg-12">
-                            <img src="./images/idx2-0.png" alt="" class="col-lg-4">
-                            <img src="./images/idx2-1.png" alt="" class="col-lg-4">
-                            <img src="./images/idx2-2.png" alt="" class="col-lg-4">
+                        <div class="flex lineScroll">
+                            <img src="./images/idx2-0.png" alt="" class="col-lg-4 col-12 col-md-4">
+                            <img src="./images/idx2-1.png" alt="" class="col-lg-4 col-12 col-md-4">
+                            <img src="./images/idx2-2.png" alt="" class="col-lg-4 col-12 col-md-4">
+                        </div>
+                        <!-- 页脚 -->
+                        <div class="pageFooter rel " style="margin-top: 6vh;">
+                            <p>BEAUTYSRP</p>
                         </div>
                     </div>
                 </div>
@@ -240,22 +111,136 @@
             <!-- 页码3 -->
             <div class="swiper-slide">
                 <div class="slide-3 index-bg">
-                    <div class="rowContent">
-                        <div class="introduceTxt col-lg-12 col-12 fr" style="height: 11vh;">
+                    <div class="rowContent rel">
+                        <div class="introduceTxt col-lg-12 col-12 fr " style="height: 11vh;width: 46%;">
                             <div>
                                 <span class="spanLine1">经营数据分析</span>
                                 <span class="spanLine2">决策有理有据</span>
                             </div>
-                            <p style="margin-top: -.4rem;margin-left: .6rem;">AUTOMATION</p>
+                            <p style="margin-top: -.8rem;margin-left: .6rem;">AUTOMATION</p>
+                            <label for=""><p class="idx3-label oneP-3" >经营统计、会员消费统计、售卡统计、项目销售统计、支付统计等15张报表 
+                                让你对生意了然于胸支持电脑与手机随时查看项目/会员/员工绩效等各类经 营报表，导出打印报表，查阅分析运营状况</p> </label>
+                        </div>
+
+                        <div class="idx-img">
+                            <img src="./images/idx3-0.png" alt="">
+                        </div>
+                        <!-- 页脚 -->
+                        <div class="pageFooter rel fr" style="margin-top: 6vh;">
+                            <p>BEAUTYSRP</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide">Slide 6</div>
+            <!-- 页码4 -->
+            <div class="swiper-slide">
+                <div class="slide-4 index-bg">
+                    <div class="rowContent">
+                        <div class="introduceTxt col-lg-12 col-12" style="height: 9vh;">
+                            <p>THE SOLUTION</p>
+                            <div>数据驱动的行业经营解决方案</div>
+                        </div>
+                        <div style="margin-top: 4vh;">
+                            <div class="blueIntroduce col-lg-4 col-12 col-md-4 oneP-1">专为美业经营场景而设计,全面解决美业经营需要</div>
+                            <p class="idx0-P" style="margin-bottom: 8vh;">
+                                多种活动营销帮助美业商家完成吸粉 <br> 转化引流，会员复购等一系列经营策略，线上线下有效的拓客全面的数据统计以及会员消费明细记录
+                            </p>
+                        </div>
+                        <div class="lineScroll">
+                            <div class="flex idx4-list">
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <img src="./images/L-body.png" alt="" class="idx4-L">
+                                    <p>美容美体</p>
+
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <!-- <img src="./images/b-hand.png" alt=""> -->
+                                    <img src="./images/L-hand.png" alt="" class="idx4-L">
+                                    <p>美甲美睫</p>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <!-- <img src="./images/b-medical.png" alt=""> -->
+                                    <img src="./images/L-medical.png" alt="" class="idx4-L">
+                                    <p>医疗美容</p>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <!-- <img src="./images/b-hair.png" alt=""> -->
+                                    <img src="./images/L-hair.png" alt="" class="idx4-L">
+                                    <p>美发造型</p>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <!-- <img src="./images/b-fix.png" alt=""> -->
+                                    <img src="./images/L-fix.png" alt="" class="idx4-L">
+                                    <p>医疗整形</p>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <!-- <img src="./images/b-TCM.png" alt=""> -->
+                                    <img src="./images/L-TCM.png" alt="" class="idx4-L">
+                                    <p>中医理疗</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 页脚 -->
+                        <div class="pageFooter rel fr" style="margin-top: 6vh;">
+                            <p>BEAUTYSRP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 页码5 -->
+            <div class="swiper-slide">
+                <div class="slide-5 index-bg">
+                    <div class="rowContent">
+                        <div class="introduceTxt col-lg-12 col-12" style="height: 9vh;">
+                            <p>NEWS</p>
+                            <div>新闻资讯</div>
+                        </div>
+                        <div style="margin:6vh">
+                            <div class="blueIntroduce col-lg-3 col-12">实时了解行业新闻资讯</div>
+                        </div>
+                        <div class="flex">
+                            <div class="col-lg-4 col-md-4">
+                                <img src="./images/newPic.png">
+                                <div class="newIntroduce">
+                                    <p>美容店如何精准拓客？-行业分析</p>
+                                    <p>在广州的王老板，最近愁的很，最近自己的美容院....</p>
+                                    <a href="#">#行业经营</a>
+                                    <span class="fr">发布时间：2020-11-29</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <img src="./images/newPic.png">
+                                <div class="newIntroduce">
+                                    <p>美容店如何精准拓客？-行业分析</p>
+                                    <p>在广州的王老板，最近愁的很，最近自己的美容院....</p>
+                                    <a href="#">#行业经营</a>
+                                    <span class="fr">发布时间：2020-11-29</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <img src="./images/newPic.png">
+                                <div class="newIntroduce">
+                                    <p>美容店如何精准拓客？-行业分析</p>
+                                    <p>在广州的王老板，最近愁的很，最近自己的美容院....</p>
+                                    <a href="#">#行业经营</a>
+                                    <span class="fr">发布时间：2020-11-29</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="whatMore">
+                            <span class="moreBtn">MORE+</span>
+                        </div>
+                        <!-- 页脚 -->
+                        <div class="pageFooter rel" style="margin-top: 6vh;">
+                            <p>BEAUTYSRP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="swiper-slide">Slide 7</div>
             <div class="swiper-slide">Slide 8</div>
             <div class="swiper-slide">Slide 9</div>
-            <div class="swiper-slide">Slide 10</div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
