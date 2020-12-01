@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>订单详情</title>
+    <link rel="stylesheet" href="../../Css/order/orderDetail.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="orderHead">
+            <div class="orderHeadTitle flex-sb">
+                <div>撤销此单</div>
+                <div class="withdrawalOrders">撤单</div>
+            </div>
+            <div class="orderHead-center">
+                <p><span>项目名称：</span>韩国小气泡补水套餐</p>
+                <p><span>项目金额：</span> ￥688</p>
+                <p><span>实收金额：</span> ￥599 <span class="preferential">项目优惠：￥100</span></p>
+            </div>
+            <div>
+                <div class="payWay">收款方式</div>
+                <p><span>微信：</span>￥499</p>
+                <p><span>现金：</span> ￥100</p>
+            </div>
+        </div>
+        <div class="orderBody">
+            <p><span>销售单号：</span>123456789</p>
+            <p><span>客户类型：</span> 散客</p>
+            <p><span>用户姓名：</span>小豪</p>
+            <p><span>联系电话：</span>13332456</p>
+            <p><span>订单时间：</span>2020-11-12 11:30:44</p>
+            <p><span>服务人员：</span>03</p>
+            <p><span>收银人员：</span>6242</p>
+        </div>
+        <!-- 底部按钮 -->
+        <div class="bottom">
+            <p class="flex">
+                <a href="#" id="outTicket" class="button button-big styleBlue outTicket" style="margin-right: 15px;">设置小票机</a>
+                <a href="#" id="outTicket" class="button button-big styleBlue outTicket">打印票据</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="overlay">
+    </div>
+    <!-- 提示框 -->
+    <div class="alertingPosition hidden">
+        <div class="alerting ">
+            <div class="alertingRow">
+                <div class="alerting-img"><img src="../../images/order/error.png" alt=""></div>
+                <div class="alerting-tip">即将撤销当前项目,请确认是否撤销</div>
+            </div>
+            <div class="alertingRow2 flex">
+                <button id="cancel">取消撤销</button>
+                <button>确认撤销</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../Plugin/jquery-3.5.1.js"></script>
+    <script src="../../../dist/bundle.js"></script>
+    <script type="module">
+        import {global} from '../../Js/global.js'; $('.withdrawalOrders').click(function() { $('#overlay').height(global.pageHeight()); $('#overlay').width(global.pageWidth()); $('#overlay').show(); $('.alertingPosition').show() }); $('#cancel').click(()=>{ $('#overlay').hide();
+        $('.alertingPosition').hide() })
+    </script>
+</body>
+
+</html>

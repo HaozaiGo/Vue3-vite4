@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>收款出票</title>
+    <link rel="stylesheet" href="../../Css/project/payProject.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="gender flex">
+            <img src="../../images/project/girl.png" alt="">
+            <div class="type">
+                <div>女</div>
+                <span>散客</span>
+            </div>
+        </div>
+        <!-- 订单核对列表 -->
+        <div class="orderComList">
+            <!-- 列 -->
+            <div class="projectListRow flex rel">
+                <img src="../../images/project/demo.png" alt="">
+                <div>
+                    黑头清洁黑头清洁黑头清洁黑头清洁黑头清洁
+                    <div class="projectMoney">￥96</div>
+                </div>
+                <span>
+                  x 2
+                </span>
+            </div>
+
+            <!-- 价格 -->
+            <div class="price">
+                <div class="price-row1 flex-sb">
+                    <div>应收：￥685</div>
+                    <div> 实收：<span id="finalPay">￥584</span></div>
+                </div>
+
+            </div>
+        </div>
+        <!-- 支付方式 -->
+        <div>
+            <div class="payTex">
+                支付方式
+            </div>
+            <div class="payTypeList">
+                <div class="payType flex-sb">
+                    <input type="checkbox" class="checkbox">
+                    <img src="../../images/project/wx.png" alt="">
+                    <div>微信支付</div>
+                    <span>￥</span>
+                    <input type="text" value="" class="payNum">
+                </div>
+                <div class="payType flex-sb">
+                    <input type="checkbox" class="checkbox">
+                    <img src="../../images/project/zhifubao.png" alt="">
+                    <div>支付宝支付</div>
+                    <span>￥</span>
+                    <input type="text" value="" class="payNum">
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- 底部按钮 -->
+        <div class="bottom">
+            <p>
+                <a href="#" id="outTicket" class="button button-big styleBlue outTicket">出票</a>
+            </p>
+        </div>
+    </div>
+    <script src="../../Plugin/jquery-3.5.1.js"></script>
+    <script src="../../../dist/bundle.js"></script>
+    <script>
+        $(document).on('click', '.outTicket', function() {
+            $.alert('即将退出当前页面回到首页', '出票成功', function() {
+                window.location.href = '../home/index.html'
+
+            });
+        });
+        let autoCount = $('#finalPay').text(); //自动获取实际价格
+        let rule = /[^0-9]/ig;
+        let clearCount = autoCount.replace(rule, ''); //正则排它
+
+        $('.checkbox').click(function() {
+            let thisParent = $(this).parent();
+            $(thisParent).children(".payNum").val(clearCount); //直接获取价格
+
+        })
+        $('.checkbox').change(function() {
+            clearCount = autoCount.replace(rule, '');
+        })
+        $('.payNum').change(function() {
+            clearCount = clearCount - $(this).val().replace(rule, '');
+            console.log(clearCount)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>今日收款</title>
+    <link rel="stylesheet" href="../../Css/waterPay/todayCollection.css">
+</head>
+
+
+<body>
+    <div class="today-content">
+        <div class="totalCollection flex-sb">
+            <div>订单总数：<span>230</span></div>
+            <div>全部收入：<span>￥26800.00</span></div>
+        </div>
+
+        <div class="flex chooseIdentity">
+            <div class="active" i="0">散客</div>
+            <div i="1">会员</div>
+        </div>
+    </div>
+    <!-- 切换的大框 -->
+    <div class="switchBox">
+        <div class="Scatter" id="0">
+            <div class="Scatter-item flex rel">
+                <div><img src="../../images/waterPay/projectImg.png" alt=""></div>
+                <div class="Scatter-item-col2">
+                    <div>我是订单项目</div>
+                    <div>收款方式：微信支付</div>
+                    <div>订单时间：2020-11-12 13:50:23</div>
+                </div>
+                <div class="rightMoney">
+                    ￥500
+                </div>
+            </div>
+
+            <div class="Scatter-item flex rel">
+                <div><img src="../../images/waterPay/projectImg.png" alt=""></div>
+                <div class="Scatter-item-col2">
+                    <div>我是订单项目</div>
+                    <div>收款方式：微信支付</div>
+                    <div>订单时间：2020-11-12 13:50:23</div>
+                </div>
+                <div class="rightMoney">
+                    ￥500
+                </div>
+            </div>
+        </div>
+        <div class="vip hidden" id="1">
+            <div class="Scatter-item flex rel">
+                <div><img src="../../images/waterPay/girlAvatar.png" alt=""></div>
+                <div class="Scatter-item-col2">
+                    <div>我是会员</div>
+                    <div>收款方式：微信支付</div>
+                    <div>订单时间：2020-11-12 13:50:23</div>
+                </div>
+                <div class="rightMoney">
+                    ￥500
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../Plugin/jquery-3.5.1.js"></script>
+    <script src="../../../dist/bundle.js"></script>
+    <script type="module">
+        import {swichBtn} from '../../Js/shareStyle.js'; swichBtn('.chooseIdentity div','active')
+
+    </script>
+</body>
+
+</html>

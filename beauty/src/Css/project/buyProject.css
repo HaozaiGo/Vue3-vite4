@@ -1,0 +1,29 @@
+.content {
+    padding: 15px 10px;
+}
+
+.empty {
+    margin-top: 50%;
+}
+
+.empty p {
+    color: #E2E2E2;
+    font-size: 11px;
+    text-align: center;
+}
+
+.empty img {
+    width: 81px;
+    display: block;
+    margin: 0 auto;
+}
+
+.projectList {
+    padding: 10px;
+    padding-bottom: 2.5rem;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+}

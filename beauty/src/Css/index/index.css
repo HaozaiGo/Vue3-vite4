@@ -1,0 +1,145 @@
+body {
+    background-color: #F6F5F9 !important;
+}
+
+.blueBg {
+    background: url('../../images/index/bg.png');
+    background-size: 100% 100%;
+    height: 22vh;
+}
+
+.cashRegister {
+    padding: 15px 10px;
+    background-color: #ffffff;
+    width: 94vw;
+    margin: 0 auto;
+    margin-top: -110px;
+    border-radius: 5px;
+}
+
+.cashRegister-row1 {
+    margin: 20px 0px;
+}
+
+.cashRegister-row1 div {
+    text-align: center;
+}
+
+.cashRegister-row1 div span {
+    color: #E64340;
+}
+
+.cashRegister-row2 div {
+    width: 28vw;
+    height: 28vw;
+    padding-top: 25px;
+    border-radius: 5px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.cashRegister-row2 div img {
+    width: 29px;
+}
+
+.cashRegister-row2 div span {
+    display: block;
+    color: #fff;
+}
+
+.cashRegister-row2 div:first-child {
+    background: linear-gradient(0deg, #00C9D1, #21F9ED);
+}
+
+.cashRegister-row2 div:nth-child(2) {
+    background: linear-gradient(0deg, #209AFF, #3BC7FF);
+}
+
+.cashRegister-row2 div:nth-child(3) {
+    background: linear-gradient(0deg, #FE960D, #FED945);
+}
+
+.cashRegisterTitle text {
+    vertical-align: top;
+}
+
+.myApplication {
+    padding: 18px 0px 8px 21px;
+    border-bottom: 1px solid #E5E5E5;
+    background-color: #ffffff;
+}
+
+.indexContent {
+    background-color: #ffffff;
+    margin-top: 10px;
+}
+
+.everyApplication {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.everyApplication div img {
+    width: 25px;
+}
+
+.everyApplication div span {
+    font-size: 12px;
+    display: block;
+}
+
+.personalData {
+    display: grid;
+    padding: 10px 11px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 8vh 8vh;
+    color: #808080;
+    background-color: #ffffff;
+    font-size: 12px;
+}
+
+.personalData div {
+    position: relative;
+}
+
+.personalData :first-child {
+    border-bottom: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+}
+
+.personalData :nth-child(2) {
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.personalData :nth-child(3) {
+    border-right: 1px solid #E5E5E5;
+}
+
+.personalData div img {
+    width: 11px;
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+}
+
+.delStyle {
+    border-bottom: #ffffff !important;
+    border-right: #ffffff !important;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.delStyle span {
+    color: #fea116;
+    border-bottom: none !important;
+    padding-top: 3px;
+    display: block;
+}
+
+.space {
+    margin-top: 10px;
+}
+
+.shopData div {
+    text-align: center;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>订单核对</title>
+    <link rel="stylesheet" href="../../Css/addProject/orderComfirm.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="gender flex">
+            <img src="../../images/project/girl.png" alt="">
+            <div class="type">
+                <div>女</div>
+                <span>散客</span>
+            </div>
+        </div>
+        <!-- 订单核对列表 -->
+        <div class="orderComList">
+            <!-- 列 -->
+            <div class="projectListRow flex rel">
+                <img src="../../images/project/demo.png" alt="">
+                <div>
+                    黑头清洁黑头清洁黑头清洁黑头清洁黑头清洁
+                    <div class="projectMoney">￥96</div>
+                </div>
+                <div class="addOrReduce flex-c">
+                    <div id="reduce">-</div>
+                    <div id="num">1</div>
+                    <div id="add">+</div>
+                </div>
+            </div>
+
+            <!-- 价格 -->
+            <div class="price">
+                <div class="price-row1 flex">
+                    <div>应收：￥685</div>
+                    <div>优惠金额：<span class="Preferential">100</span> </div>
+                </div>
+                <div class="price-row2">
+                    实收：<span>￥584</span>
+                </div>
+            </div>
+        </div>
+        <!-- 底部按钮 -->
+        <div class="bottom">
+            <p>
+                <a href="#" class="button button-big styleBlue">下一步</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="../../Plugin/jquery-3.5.1.js"></script>
+    <script src="../../../dist/bundle.js"></script>
+    <script type="module">
+        import {addOrReduce} from '../../Js/shareStyle.js'; $('#reduce').click(function(){ addOrReduce('#num',undefined) }) ;$('#add').click(function(){ addOrReduce('#num',add) })
+    </script>
+</body>
+
+</html>
