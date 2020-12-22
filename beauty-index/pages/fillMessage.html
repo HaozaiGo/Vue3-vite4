@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <title>填写信息</title>
+    <!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="stylesheet" href="../css/share.css">
+    <link rel="stylesheet" href="../css/fillMessage/M-fillMessage.css">
+    <link rel="stylesheet" href="../css/layer.css">
+    <link rel="stylesheet" href="../css/fillMessage/fillMessage.css">
+
+</head>
+
+<body>
+    <div class="rowContent">
+        <!-- 头部+引导条 -->
+        <div class="header-navigation">
+            <div class="flex-sb">
+                <div class="createShop">创建美智盈美业店铺</div>
+                <div> <a href="#" class="backIndex">返回官网 ></a> </div>
+            </div>
+            <div class="navigation flex-c">
+                <div class="col-lg-4 active">1.现在版本</div>
+                <div class="col-lg-4 shep">2.填写信息</div>
+                <div class="col-lg-4 shep-end">3.开店成功</div>
+            </div>
+        </div>
+        <!-- 信息填写 -->
+        <div class="messagesFill">
+            <div class="messages-Div">
+                <label for="">店铺名称:</label>
+                <input type="text" name="" id="" placeholder="请输入您的店铺名称">
+            </div>
+            <div class="messages-Div">
+                <label for="">主营类目:</label>
+                <select name="" id="" class="selection">
+                    <option value="none" selected disabled hidden>请选择类目</option>
+                    <option value="美容" class="option">美容</option>
+                    <option value="美发">美发</option>
+                    <option value="美甲">美甲</option>
+                </select>
+            </div>
+
+            <div class="form-group messages-Div flex-c">
+                <label for="">店铺地址:</label>
+
+                <div class="col-3 mobile-Select">
+                    <select name="input_province" id="input_province" class="form-control">
+                            <option value="">请选择</option>
+                    </select>
+                </div>
+                <div class="col-3 mobile-Select">
+                    <select name="input_city" id="input_city" class="form-control">
+                            <option value="">请选择</option>
+                    </select>
+                </div>
+                <div class="col-3 mobile-Select">
+                    <select name="input_area" id="input_area" class="form-control">
+                            <option value="">请选择</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="messages-Div">
+                <label for="">地图定位:</label>
+                <input type="text" name="" id="" placeholder="输入地址或点击地图定位" class="mapInput">
+                <button class="resetPosition col-12 col-lg-2 ripple rel">重新定位</button>
+            </div>
+
+        </div>
+        <!-- 地图 -->
+        <div class="map">
+            <div id="myMap">
+            </div>
+        </div>
+        <!-- 同意协议 -->
+        <div class="agree">
+            <input type="checkbox" name="" id="checkbox">我已阅读并同意 <span class="agreement"> 《美智盈产品订购及服务协议》</span>
+            <!-- 创建店铺 -->
+            <div>
+                <button class="ripple createShopBtn rel" disabled>
+                    创建店铺
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=55adbd8943a50bf8ae41efb67e63db69"></script>
+    <script src="../js/setProvince/data.js"></script>
+    <script src="../js/layer.js"></script>
+    <script src="../js/setProvince/setProvince.js"></script>
+    <script src="../js/fillMessage/gaoDeMap.js"></script>
+
+    <script>
+        $('#checkbox').click(function() {
+                console.log($("input[type='checkbox']").is(':checked'))
+                $("input[type='checkbox']").is(':checked') ? $('.createShopBtn').attr("disabled", false) : $('.createShopBtn').attr('disabled', true)
+            })
+            // 查看服务协议
+        $('.agreement').click(function() {
+            layer.open({
+                // icon: 1,
+                area: ['400px', 'auto'],
+                content: `<p > <h2 class="h2P">【SaaS】美智盈美业软件订购及服务协议 </h2></p>
+                <p > <h4 class="h2P">本协议自2020年10月1日起正式生效</h4> </p>
+                <p>一、导语</p>
+                <p>(一)【审慎阅读】当你点击同意本协议之前，请务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款、法律适用和争议解决条款。免除或者限制责任的条款将以粗体下划线标识，你应重点阅读。如你对协议有任何疑问，可以向美智盈客服咨询</p>
+                <p>(二)【签约流程】当你按页面提示完成操作后，即您已充分阅读，理解并接受本协议的全部内容。阅读本协议过程中，如果你不同意本协议或其中任何条款约定，您应理解停止签约流程</p>
+                <p>(三)【软件系统】"美智盈美业"软件服务(以下简称"本服务")是由广东美态科技有限公司的所有者，向美智盈美业商家(以下简称"你"或"商家")提供的AISRP美业智能管理系统"软件系统(以下简称"本系统")</p>
+                `
+            })
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+/* 默认大Pc */
+
+@media(min-width: 1580px) {
+    html,
+    body {
+        font-size: 100px;
+    }
+    .rowContent {
+        padding: 15vh 16vw 3vh 16vw;
+        height: 100%;
+    }
+}
+
+
+/* laptop */
+
+@media(max-width: 1580px) {
+    .rowContent {
+        padding: 15vh 16vw 3vh 16vw;
+        height: 100%;
+    }
+    html,
+    body {
+        font-size: 80px;
+    }
+}
+
+
+/* ipad-laptop  */
+
+@media(max-width: 992px) {
+    .rowContent {
+        padding: 10vh 6vw 3vh 6vw;
+        height: 100%;
+    }
+    html,
+    body {
+        font-size: 80px;
+    }
+}
+
+
+/* ipad*/
+
+@media(max-width: 768px) {
+    .rowContent {
+        padding: 5vh 10vw;
+        height: 100%;
+    }
+    html,
+    body {
+        font-size: 70px;
+    }
+}
+
+
+/* iphone */
+
+@media(max-width: 480px) {
+    html,
+    body {
+        font-size: 65px;
+    }
+    .rowContent {
+        padding: 6.6vh 5vw 3vh 5vw;
+    }
+}
+
+@media(max-width:320px) {
+    html,
+    body {
+        font-size: 43px;
+    }
+    .rowContent {
+        padding: 6vh 5vw 3vh 5vw;
+    }
+}
