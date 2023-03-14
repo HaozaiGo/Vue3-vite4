@@ -1,8 +1,0 @@
-@media(max-width:480px) {
-    .PC-Img {
-        display: none;
-    }
-    .mobile-Img {
-        display: block !important;
-    }
-}

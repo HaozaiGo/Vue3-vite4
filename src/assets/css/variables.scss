@@ -1,0 +1,90 @@
+/**
+ * @copyright chuzhixin 1204505056@qq.com
+ * @description 全局主题变量配置
+ */
+/* stylelint-disable */
+@charset "utf-8";
+//框架默认主题色
+$base-color-default: #3477FE;
+//默认层级
+$base-z-index: 999;
+//菜单背景色
+$base-menu-background: #DFDFE6;
+//菜单文字颜色
+$base-menu-color: #35435D;
+//菜单选中文字颜色
+$base-menu-color-active: #061D30 ;
+//菜单选中背景色
+$base-menu-background-active: #EAEAEF;
+//标题颜色
+$base-title-color: #fff;
+//字体大小配置
+$base-font-size-small: 12px;
+$base-font-size-default: 13px;
+$base-font-size-big: 16px;
+$base-font-size-bigger: 18px;
+$base-font-size-max: 22px;
+$base-font-color: #606266;
+$base-color-header: $base-menu-background;
+$base-color-blue: $base-color-default;
+$base-color-green: #13ce66;
+$base-color-white: #fff;
+$base-color-black1: #1B2431;
+$base-color-black: #000;
+$base-color-yellow: #ffba00;
+$base-color-orange: #ff6700;
+$base-color-red: #ff4d4f;
+$base-color-gray: rgba(0, 0, 0, 0.65);
+$base-main-width: 1279px;
+$base-border-radius: 2px;
+$base-border-color: #dcdfe6;
+//输入框高度
+$base-input-height: 32px;
+//默认paddiing
+$base-padding: 20px;
+//默认阴影
+$base-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+//横向布局时top-bar、logo、一级菜单的高度
+$base-top-bar-height: 70px;
+//纵向布局时logo的高度
+$base-logo-height: 55px;
+//顶部nav-bar的高度
+$base-nav-bar-height: 45px;
+//顶部多标签页tags-bar的高度
+$base-tags-bar-height: 55px;
+//顶部多标签页tags-bar中每一个item的高度
+$base-tag-item-height: 38px;
+//菜单li标签的高度
+$base-menu-item-height: 62px;
+// 菜单li标签的lineHeight
+$base-menu-item-lineHeight:28px;
+
+// 菜单箭头显示
+$base-menu-item-showArrow:none;
+
+// 文字图标居中位置
+$base-menu-item-align:center;
+//app-main的高度
+$base-app-main-height: calc(
+  100% - #{$base-padding} 
+);
+$base-leftSize-menu-width:80px;
+//纵向布局时左侧导航未折叠时的宽度
+$base-left-menu-width: 190px;
+//纵向布局时左侧导航未折叠时右侧内容的宽度
+$base-right-content-width: calc(100% - #{$base-left-menu-width});
+//纵向布局时左侧导航已折叠时的宽度
+$base-left-menu-width-min: 55px;
+//纵向布局时左侧导航已折叠时右侧内容的宽度
+$base-right-content-width-min: calc(100% - #{$base-left-menu-width-min});
+$base-transition: all 0.3s;
+
+:export {
+  menu-color: $base-menu-color;
+  menu-color-active: $base-menu-color-active;
+  menu-background: $base-menu-background;
+  menu-background-active: $base-menu-background-active;
+  tags-bar-background-active: $base-color-blue;
+  button-background: $base-color-blue;
+  pagination-background-active: $base-color-blue;
+}
