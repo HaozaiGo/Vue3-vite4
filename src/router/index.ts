@@ -3,6 +3,7 @@
  */
 
 
+
 import { createRouter, createWebHistory } from "vue-router";
  import Layout from "@/layouts/index.vue" ;
  import setting from '@/config/settings.js';
@@ -38,11 +39,11 @@ export const constantRoutes = [
     component: (resolve:any) => import("@/views/status/404.vue"),
     hidden: true
   },
-  {
-    path: '/401',
-    component: (resolve:any) => import("@/views/staus/401.vue"),
-    hidden: true
-  },
+  // {
+  //   path: '/401',
+  //   component: (resolve:any) => import("@/views/staus/401.vue"),
+  //   hidden: true
+  // },
   {
     path: '/API',
     component: (resolve:any) => require('@/views/BasicInformation/APIInterface/index'),
