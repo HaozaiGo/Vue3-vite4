@@ -11,8 +11,8 @@
         <span>首页</span>
       </el-menu-item>
 
-      <el-sub-menu v-for="(item, index) in data.routes" :index="String(index + 1)">
-        <template #title>
+      <el-sub-menu v-for="(item, index) in data.routes" :index="String(index + 1)" @click="handleClickMenu(item)">
+        <template #title >
           <el-icon>
             <setting />
           </el-icon>
@@ -59,6 +59,10 @@ const handleClickRoute = (item,children,menu)=>{
   
 }
 
+const handleClickMenu = (item)=>{
+  console.log(item);
+  
+}
 
 
 </script>

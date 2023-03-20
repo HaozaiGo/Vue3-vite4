@@ -1,6 +1,9 @@
 /*
  * @Author: xiaoHao
  */
+/*
+ * @Author: xiaoHao
+ */
 import { defineAsyncComponent } from "vue";
 import type { RouteRecordRaw } from "vue-router";
 
@@ -25,11 +28,11 @@ export const vueRouter = function(): Array<RouteRecordRaw>{
     const components = getComponents();
 
     Object.keys(modules).forEach(key=>{
-     
         
         const viewSrc = components[key];
         
         const file = viewSrc.default;
+        // console.log(file);
         // 处理path路径
         let pathSp = file.__file.split('views/');
         const pathRes = pathSp[1].replace('/index.vue','');
