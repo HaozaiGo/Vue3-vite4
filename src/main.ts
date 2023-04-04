@@ -4,6 +4,9 @@
 /*
  * @Author: xiaoHao
  */
+/*
+ * @Author: xiaoHao
+ */
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -20,6 +23,8 @@ import App from "./App.vue";
 import router from "./router";
 import { asyncComponent } from '@/router/global'
 import "./assets/main.css";
+// import akeUi from 'ake-ui';
+// import 'ake-ui/lib/ake-ui.css';
 
 
 const app = createApp(App);
