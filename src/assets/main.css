@@ -32,3 +32,31 @@ a,
   background-size: 100%;
 
 }
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex-sb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-sr {
+  display: flex;
+  justify-content: space-around;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.content{
+  background-color: #ffffff;
+  padding: 10px 20px;
+}
+

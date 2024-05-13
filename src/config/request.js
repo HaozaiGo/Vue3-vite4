@@ -4,16 +4,14 @@
 import axios from "axios";
 import settings from "@/config/settings";
 import { tansParams } from "@/utils/ruoyi";
-import { ElMessage } from 'element-plus'
+import { ElMessage } from "element-plus";
 import { refreshlogin } from "@/api/common/user";
 import { getToken, removeToken, setToken } from "@/utils/auth";
 // import qs from "qs";
 import router from "@/router";
-import _ from "lodash";
 axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded";
 const service = axios.create({
   // baseURL: process.env.VUE_APP_BASE_API,
-  
   timeout: settings.requestTimeout,
   headers: {
     "Content-Type": settings.contentType,
@@ -26,29 +24,22 @@ let loadingInstance;
 service.interceptors.request.use(
   (config) => {
     const isToken = (config.headers || {}).isToken === false;
-    // console.log(isToken);
-    // if (
-    //   config.url != "/mrbsservice/login" &&
-    //   window.localStorage.getItem("token") == null
-    //   &&
-    //   location.pathname != "/mrbs/login"
-    // ) {
-    //   removeToken();
-    //   router.push("/login");
-    //   return;
-    // }
+
     if (getToken() && !isToken) {
-      config.headers["Authorization"] = "Bearer " + window.localStorage.getItem("token"); // 让每个请求携带自定义token 请根据实际情况自行修改
+      config.headers["Authorization"] =
+        "Bearer " + window.localStorage.getItem("token"); // 让每个请求携带自定义token 请根据实际情况自行修改
     } else if (
+      // 刷新token
       getToken() == undefined &&
-      location.pathname != "/mrbs/login" &&
-      config.url != "/mrbsservice/login" &&
-      location.pathname != "/mrbs/" &&
+      location.pathname != "/KTJ/login" &&
+      config.url != "/KTJ/login" &&
+      location.pathname != "/KTJ/" &&
       window.localStorage.getItem("token") != null
     ) {
       return refreshlogin().then((res) => {
         if (res.token != undefined) {
-          config.headers["Authorization"] = "Bearer " + window.localStorage.getItem("token"); // 让每个请求携带自定义token 请根据实际情况自行修改
+          config.headers["Authorization"] =
+            "Bearer " + window.localStorage.getItem("token"); // 让每个请求携带自定义token 请根据实际情况自行修改
           window.localStorage.setItem("expires_in", res.expires_in);
           setToken(res.token);
           return config;
@@ -82,20 +73,33 @@ const waringMsg = (message) => {
 
 service.interceptors.response.use(
   (response) => {
-    // service.get('/system/dept/list', {
-    //   transformRequest: [(params) => {
-    //   }],
-    // })
     if (loadingInstance) {
       loadingInstance.close();
     }
     const { status, data, config } = response;
     const { code, msg, access_token, error } = data;
+    if (code === 0 && msg != null && msg != "null") {
+      // 关于操作 成功的
+      ElMessage({
+        message: msg,
+        type: "success",
+        duration: settings.messageDuration,
+      });
+      return data;
+    }
+    if (code === 500) {
+      ElMessage({
+        message: msg,
+        type: "error",
+        duration: settings.messageDuration,
+      });
+      return data;
+    }
     if (error == "invalid_token") {
       removeToken();
       router.push("/login");
     }
-    // 状态码 不等于succ  没有token
+    // 状态码 不等于succ 0  没有token
     if (code !== settings.successCode && access_token == undefined) {
       switch (code) {
         case settings.invalidCode:
@@ -108,7 +112,6 @@ service.interceptors.response.use(
           removeToken();
           router.push("/login");
           break;
-          code;
         default:
           break;
       }

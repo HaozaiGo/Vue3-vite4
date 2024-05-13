@@ -1,5 +1,5 @@
 /**
- * @copyright chuzhixin 1204505056@qq.com
+ * @copyright xiaohao
  * @description 全局主题变量配置
  */
 /* stylelint-disable */
@@ -87,4 +87,11 @@ $base-transition: all 0.3s;
   tags-bar-background-active: $base-color-blue;
   button-background: $base-color-blue;
   pagination-background-active: $base-color-blue;
+}
+
+.search {
+  margin-bottom: 20px;
+  div {
+    margin-right: 15px;
+  }
 }

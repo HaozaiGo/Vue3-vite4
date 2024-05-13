@@ -68,12 +68,10 @@
 import path from "path";
 
 import {
-  getFavorites,
   DeleteFavorites,
   AddFavorites,
-  getBtns,
 } from "@/api/common/router.js";
-import {baseSettings} from '@/stores/counter';
+import { baseSettings } from "@/stores/counter";
 
 export default {
   name: "TagsBar",
@@ -85,15 +83,14 @@ export default {
       checkList: [],
       List: [],
       flag: false,
-      settings:baseSettings(),
-      
+      settings: baseSettings(),
     };
   },
 
   computed: {
-    routes(){
-      return this.settings.routes
-    }
+    routes() {
+      return this.settings.routes;
+    },
     // ...mapGetters({
     //   visitedRoutes: "tagsBar/visitedRoutes",
     //   routes: "routes/routes",
@@ -105,93 +102,83 @@ export default {
       handler(route) {
         this.initTags();
         this.addTags();
-        getFavorites().then((res) => {
-          
-          this.List = res.data;
-          this.visitedRoutes1 = this.List;
-          let tabActive = "";
-          this.checkList = [];
-          this.visitedRoutes1.forEach((item, index) => {
-            this.checkList.push(0);
-            this.List.forEach((res) => {
-              if (res.meta.title == item.meta.title) {
-                this.checkList[index] = 1;
-                item.Favorites = true;
-                document.getElementsByClassName("Tabs-i")[index].className =
-                  "Tabs-i el-icon-star-on";
-              }
-            });
-            if (item.path === this.$route.path) {
-              tabActive = item.path;
-            }
-          });
-          this.tabActive = tabActive;
-        });
-        // let tabActive = "";
-        // this.checkList = [];
-        // this.visitedRoutes.forEach((item, index) => {
-        //   this.checkList.push(0);
-        //   if (item.path === this.$route.path) {
-        //     tabActive = item.path;
-        //   }
+        // getFavorites().then((res) => {
+        //   this.List = res.data;
+        //   this.visitedRoutes1 = this.List;
+        //   let tabActive = "";
+        //   this.checkList = [];
+        //   this.visitedRoutes1.forEach((item, index) => {
+        //     this.checkList.push(0);
+        //     this.List.forEach((res) => {
+        //       if (res.meta.title == item.meta.title) {
+        //         this.checkList[index] = 1;
+        //         item.Favorites = true;
+        //         document.getElementsByClassName("Tabs-i")[index].className =
+        //           "Tabs-i el-icon-star-on";
+        //       }
+        //     });
+        //     if (item.path === this.$route.path) {
+        //       tabActive = item.path;
+        //     }
+        //   });
+        //   this.tabActive = tabActive;
         // });
-        // this.tabActive = tabActive;
       },
       immediate: true,
     },
- 
+
     visitedRoutes: function () {
       this.visitedRoutes1 = this.visitedRoutes;
     },
   },
   mounted() {
-  //  console.log(this.settings.routes);
+    //  console.log(this.settings.routes);
     this.visitedRoutes1 = this.visitedRoutes;
-    getFavorites().then((res) => {
-      this.List = res.data;
-      let tabActive = "";
-      this.checkList = [];
-      res.data.forEach((item, index) => {
-        var arr = JSON.parse(window.localStorage.getItem("routes"));
-        var path = "";
-        var path1 = "";
-        var path2 = "";
-        arr.forEach((res) => {
-          if (res.meta != undefined && res.meta.title == item.meta.title) {
-          }
-          res.children.forEach((res1) => {
-            if (res1.meta != undefined && res1.meta.title == item.meta.title) {
-            }
-            res1.children.forEach((res2) => {
-              if (
-                res2.meta != undefined &&
-                res2.meta.title == item.meta.title
-              ) {
-                path = res.path.split("/")[res.path.split("/").length - 1];
-                path1 = res1.path;
-                path2 = res2.path;
-              }
-            });
-          });
-          item.path = "/" + path + "/" + path1 + "/" + path2;
-        });
-        if (item.path === this.$route.path) {
-        } else {
-          this.visitedRoutes1.push(item);
-        }
-      });
-      setTimeout(() => {
-        this.visitedRoutes1.forEach((item, index) => {
-          this.List.forEach((res) => {
-            if (res.meta.title == item.meta.title) {
-              item.Favorites = true;
-              document.getElementsByClassName("Tabs-i")[index].className =
-                "Tabs-i el-icon-star-on";
-            }
-          });
-        });
-      }, 500);
-    });
+    // getFavorites().then((res) => {
+    //   this.List = res.data;
+    //   let tabActive = "";
+    //   this.checkList = [];
+    //   res.data.forEach((item, index) => {
+    //     var arr = JSON.parse(window.localStorage.getItem("routes"));
+    //     var path = "";
+    //     var path1 = "";
+    //     var path2 = "";
+    //     arr.forEach((res) => {
+    //       if (res.meta != undefined && res.meta.title == item.meta.title) {
+    //       }
+    //       res.children.forEach((res1) => {
+    //         if (res1.meta != undefined && res1.meta.title == item.meta.title) {
+    //         }
+    //         res1.children.forEach((res2) => {
+    //           if (
+    //             res2.meta != undefined &&
+    //             res2.meta.title == item.meta.title
+    //           ) {
+    //             path = res.path.split("/")[res.path.split("/").length - 1];
+    //             path1 = res1.path;
+    //             path2 = res2.path;
+    //           }
+    //         });
+    //       });
+    //       item.path = "/" + path + "/" + path1 + "/" + path2;
+    //     });
+    //     if (item.path === this.$route.path) {
+    //     } else {
+    //       this.visitedRoutes1.push(item);
+    //     }
+    //   });
+    //   setTimeout(() => {
+    //     this.visitedRoutes1.forEach((item, index) => {
+    //       this.List.forEach((res) => {
+    //         if (res.meta.title == item.meta.title) {
+    //           item.Favorites = true;
+    //           document.getElementsByClassName("Tabs-i")[index].className =
+    //             "Tabs-i el-icon-star-on";
+    //         }
+    //       });
+    //     });
+    //   }, 500);
+    // });
   },
   methods: {
     changeFavorites(item, index) {
@@ -308,18 +295,17 @@ export default {
       return tags;
     },
     initTags() {
-      
       const affixTags = (this.affixTags = this.filterAffixTags(this.routes));
       for (const tag of affixTags) {
         if (tag.name) {
-          this.settings.addVisitedRoute(tag)
+          this.settings.addVisitedRoute(tag);
         }
       }
     },
     addTags() {
       const { name } = this.$route;
       if (name) {
-        this.settings.addVisitedRoute(this.$route)
+        this.settings.addVisitedRoute(this.$route);
         // this.$store.dispatch("tagsBar/addVisitedRoute", this.$route);
       }
       return false;
@@ -520,9 +506,8 @@ export default {
   }
 }
 .tags-bar-container {
-
   width: calc(100%);
-  
+
   box-sizing: border-box;
   height: $base-tags-bar-height;
   user-select: none;
@@ -534,7 +519,7 @@ export default {
   justify-content: space-between;
   padding-left: $base-padding;
   padding-right: $base-padding;
-  
+
   transition: left 0.3s;
 
   .tags-content {
@@ -586,26 +571,24 @@ export default {
     // }
   }
 
-  .tags-content :deep(.el-tabs__nav-next,.el-tabs__nav-prev){
+  .tags-content :deep(.el-tabs__nav-next, .el-tabs__nav-prev) {
     height: $base-tag-item-height;
-        line-height: $base-tag-item-height;
+    line-height: $base-tag-item-height;
   }
 
-  .tags-content :deep(.el-tabs__header){
+  .tags-content :deep(.el-tabs__header) {
     border-bottom: 0;
-    & :deep(.el-tabs__nav){
+    & :deep(.el-tabs__nav) {
       border: 0;
     }
-    & :deep(.el-tabs__item){
+    & :deep(.el-tabs__item) {
       height: $base-tag-item-height;
-          line-height: $base-tag-item-height;
-          border: 1px solid $base-border-color;
-          margin-right: 5px;
-          border-radius: $base-border-radius;
-          box-sizing: border-box;
-      
+      line-height: $base-tag-item-height;
+      border: 1px solid $base-border-color;
+      margin-right: 5px;
+      border-radius: $base-border-radius;
+      box-sizing: border-box;
     }
   }
-
 }
 </style>

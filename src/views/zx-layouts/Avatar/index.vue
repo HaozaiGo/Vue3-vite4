@@ -50,7 +50,8 @@
       >
         <el-container style="margin-top: 0px">
           <el-aside width="80px"
-            ><img
+            >
+            <!-- <img
               style="
                 width: 60px;
                 height: 60px;
@@ -58,7 +59,8 @@
                 margin-top: 10px;
               "
               src="@/assets/owner.png"
-          /></el-aside>
+          /> -->
+        </el-aside>
           <el-main>
             <div class="titleInfo" v-if="myInfoDialog">
               <div>账号：{{ infoData.userName || "无" }}</div>
@@ -243,7 +245,6 @@ export default {
       this.dialogVisible = true;
     },
     personalCenter() {
-      debugger;
       this.$router.push("/personalCenter/personalCenter");
     },
     showMyInfo() {
@@ -255,18 +256,9 @@ export default {
       this.myInfoDialog = !this.myInfoDialog;
     },
     logout() {
-      const fullPath = this.$route.fullPath;
-      this.$store.dispatch("user/logout");
-
-      location.reload(); // 为了重新实例化vue-router对象 避免bug
+      //location.reload(); // 为了重新实例化vue-router对象 避免bug
       window.localStorage.removeItem("token");
-      this.$router.push(`/login`);
-      // this.$baseConfirm(
-      //   "您确定要退出" + this.$baseTitle + "吗?",
-      //   null,
-      //   async () => {
-      //   }
-      // );
+      this.$router.replace(`/login`);
     },
     // 上传头像
     // uploadAvatar(data) {

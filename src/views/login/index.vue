@@ -2,42 +2,57 @@
   <div class="login-container">
     <el-row style="position: fixed; width: 100%; height: 100%; z-index: 2">
       <el-col :span="24" class="login-right" style="">
-        <el-form ref="loginForm" :model="loginForm" :rules="loginRules" auto-complete="off" class="login-form"
-          label-position="left">
-          <div style="margin-bottom: 30px">
-
-            <div style="width: 400px; text-align: center">
-              <img style="width: 143px; height: 30px; margin-bottom: 15px" src="@/assets/img/login_images/system.png"
-                alt="" />
-            </div>
-
-            <div style="
-                        color: #fff;
-                        font-size: 25px;
-                        font-weight: 900;
-                        line-height: 40px;
-                        width: 400px;
-                      ">
-              水电表综合计费监管系统
+        <el-form
+          ref="loginForm"
+          :model="loginForm"
+          :rules="loginRules"
+          auto-complete="off"
+          class="login-form"
+          label-position="top"
+        >
+          <div style="margin-bottom: 30px" class="flex">
+            <!-- Logo -->
+            <div
+              style="
+                color: #fff;
+                font-size: 25px;
+                font-weight: 900;
+                line-height: 40px;
+                width: 400px;
+              "
+            >
+              <img
+                style="width: 60px; vertical-align: middle; margin-right: 12px"
+                src="@/assets/img/login_images/KTJ_Logo.png"
+                alt=""
+              />
+              腾蛟后台管理系统
             </div>
           </div>
-          <el-form-item prop="username">
-            <span class="svg-container svg-container-admin">
-              <vab-icon :icon="['fas', 'user']" />
-            </span>
-            <span class="title-top">账号</span>
-            <el-input style="width: 400px" v-model.trim="loginForm.username" @blur="changeUsername" v-focus
-              auto-complete="off" placeholder="请输入用户名" tabindex="1" type="text" />
+          <el-form-item prop="username" label="账号">
+            <el-input
+              style="width: 400px"
+              v-model.trim="loginForm.username"
+              @blur="changeUsername"
+              v-focus
+              auto-complete="off"
+              placeholder="请输入用户名"
+              tabindex="1"
+              type="text"
+            />
           </el-form-item>
-          <el-form-item prop="password">
-            <span class="svg-container svg-container-pass">
-              <vab-icon :icon="['fas', 'lock']" />
-            </span>
-            <span class="title-top">密码<span style="color: red">*</span></span>
-            <el-input style="width: 400px" :key="passwordType" ref="password" v-model.trim="loginForm.password"
-              :type="passwordType" auto-complete="off" placeholder="请输入密码" tabindex="2"
-              @keyup.enter.native="handleLogin" />
-
+          <el-form-item prop="password" label="密码">
+            <el-input
+              style="width: 400px"
+              :key="passwordType"
+              ref="password"
+              v-model.trim="loginForm.password"
+              :type="passwordType"
+              auto-complete="off"
+              placeholder="请输入密码"
+              tabindex="2"
+              @keyup.enter.native="handleLogin"
+            />
           </el-form-item>
 
           <el-form-item>
@@ -45,7 +60,6 @@
               <el-icon :size="20" color="#fff">
                 <Right />
               </el-icon>
-
             </el-button>
           </el-form-item>
         </el-form>
@@ -57,7 +71,7 @@
           {{ text }}
         </div>
         <div class="my-list">
-          客服电话:400-678-1126，广东艾科技术股份有限公司 版权所有。
+          客服电话:400-678-1126，佛山魁腾蛟科技有限公司 版权所有。
         </div>
       </div>
     </div>
@@ -68,19 +82,9 @@
 import router from "@/router/index.ts";
 import { isPassword, getCodeImg } from "@/utils/validate";
 import { getToken, removeToken } from "@/utils/auth.js";
-import {
-  getRouterList,
-  getWeather,
-  usersubprojects,
-  currentproject,
-  getFavorites,
-} from "@/api/common/router.js";
-import { login } from '@/api/common/user.js'
-
-import { getSysAuthInfo } from "@/api/project/lingshi/apiTest.js";
-import {baseSettings} from '@/stores/counter'
-
-
+import { getRouterList, getFavorites } from "@/api/common/router.js";
+import { login } from "@/api/common/user.js";
+import { baseSettings } from "@/stores/counter";
 export default {
   name: "Login",
   directives: {
@@ -106,17 +110,16 @@ export default {
       }
     };
     return {
-      store:baseSettings(),
+      store: baseSettings(),
       wrapWidth: 0,
       contentWidth: 0,
       text: "",
       width: "",
       codeUrl: "",
-      nodeEnv: process.env.NODE_ENV,
       title: this.$baseTitle,
       loginForm: {
-        username: "",
-        password: "",
+        username: process.env.NODE_ENV === "development" ? "ktj" : "",
+        password: process.env.NODE_ENV === "development" ? "admin123" : "",
         code: "",
         uuid: "",
         client_id: "web",
@@ -149,14 +152,12 @@ export default {
     $route: {
       handler(route) {
         this.redirect = (route.query && route.query.redirect) || "/";
-        // console.log(this.redirect);
       },
       immediate: true,
     },
   },
   created() {
     this.width = window.innerWidth;
-    this.getSysAuthInfo();
   },
   mounted() {
     const that = this;
@@ -169,11 +170,6 @@ export default {
     removeToken();
   },
   methods: {
-    async getSysAuthInfo() {
-      const res = await getSysAuthInfo();
-      this.text = `欢迎：${res.data.systemName}使用艾科水电综合计费监管系统！`;
-    },
-
     changeUsername() {
       // this.getCode();
     },
@@ -230,9 +226,12 @@ export default {
       });
     },
 
-
-
     handleLogin() {
+      // if (process.env.NODE_ENV === "development") {
+      //   setTimeout(() => {
+      //     this.$router.push("/index");
+      //   }, 300);
+      // }
 
       window.localStorage.setItem("username", this.loginForm.username);
       this.$refs.loginForm.validate(async (valid) => {
@@ -240,62 +239,28 @@ export default {
           this.loading = true;
           const res = await login(this.loginForm);
           // 登录success
-          if (res.code == this.$sCode) {
-            window.localStorage.setItem("token", res.token)
+          if (res.code === 0) {
+            window.localStorage.setItem("token", res.data);
           } else {
             this.loginForm.code = "";
+            this.$message.error(res.msg);
           }
-
-          const routerPath = this.redirect === "/404" || this.redirect === "/401"
-            ? "/"
-            : this.redirect;
-
           getRouterList().then((res) => {
-            // this.getFavorites();
-            var children = res.data;
-
-         
-            children.forEach((item) => {
-              item.children.forEach((item1) => {
-                item1.component = "EmptyLayout";
-              });
-            });
-            console.log(children);
-        
-            // console.log(this.store);
-            this.store.setRoute(children)
-
-
-            // children.forEach((res) => {
-            //   // res.meta.keepAlive = true;
-            //   if (res.children != undefined) {
-            //     res.children.forEach((res1) => {
-            //       // res1.meta.keepAlive = true;
-            //       if (res1.children != undefined) {
-            //         res1.children.forEach((res2) => {
-            //           res2.meta.keepAlive = true;
-            //         });
-            //       }
-            //     });
-            //   }
-            // });
-            // window.localStorage.setItem("系统name", children.meta.title);
-            window.localStorage.setItem("routes", JSON.stringify(children));
-
-         
-            // this.$store.dispatch("routes/setAllRoutes").then((res) => {
-            //   router.addRoutes(res);
-            // });
-            // this.$store.dispatch("tagsBar/delAllRoutes");
-
-            setTimeout(() => {
-              this.$router.push("/index");
-            }, 300);
-
+            if (res.code === 0) {
+              const route = res.data;
+              // children.forEach((item) => {
+              //   item.children.forEach((item1) => {
+              //     item1.component = "EmptyLayout";
+              //   });
+              // });
+              console.log(route);
+              this.store.setRoute(route);
+              window.localStorage.setItem("routes", JSON.stringify(route));
+              setTimeout(() => {
+                this.$router.push("/index");
+              }, 300);
+            }
           });
-
-
-
 
           this.loading = false;
         } else {
@@ -306,23 +271,23 @@ export default {
   },
 };
 </script>
-<style >
+<style scoped>
+:deep(.el-form-item__label) {
+  color: #fff;
+}
+:deep(.el-input) {
+  --el-input-focus-border-color: rgb(233, 145, 23);
+}
+.input_sty {
+  width: 400px;
+  display: block;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-transition-delay: 99999s;
   -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
-}
-
-.login-form .el-input__inner {
-  background-color: #fff !important;
-  border: 1px solid #fff !important;
-  border-radius: 1px;
-}
-
-.login-form .el-input__inner:focus {
-  border: 1px solid #fff !important;
 }
 </style>
 <style lang="scss" scoped>
@@ -346,11 +311,13 @@ input:-webkit-autofill:active {
   position: absolute;
   left: 0;
   margin-top: -30px;
-  background: linear-gradient(90deg,
-      #5e9ce4 0%,
-      #3a74b7 0%,
-      #2c7cc9 52%,
-      #3496e6 100%);
+  background: linear-gradient(
+    90deg,
+    #5e9ce4 0%,
+    #3a74b7 0%,
+    #2c7cc9 52%,
+    #3496e6 100%
+  );
 }
 
 .login-container {
@@ -371,11 +338,12 @@ input:-webkit-autofill:active {
 
   .title-top {
     height: 10px;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
-    color: rgba(0, 145, 255, 1);
-    position: absolute;
-    margin-top: -25px;
+    color: #ffffff;
+    // position: absolute;
+    // margin-top: -25px;
+    display: block;
     line-height: 10px;
   }
 
@@ -414,10 +382,11 @@ input:-webkit-autofill:active {
   }
 
   .login-btn {
+    cursor: pointer;
     margin-left: 175px;
     display: inherit;
     width: 50px;
-    margin-top: -20px;
+    margin-top: 10px;
     height: 50px;
     border-radius: 30px;
     border: 1px solid rgba(0, 145, 255, 1);
@@ -434,9 +403,9 @@ input:-webkit-autofill:active {
 
   .login-form {
     position: fixed;
-    left: 10%;
-    width: 400px;
-    top: 43%;
+    left: 15%;
+    width: 600px;
+    top: 48%;
     margin-top: -248px;
     z-index: 2;
     // background: #fff;
@@ -520,7 +489,6 @@ input:-webkit-autofill:active {
     color: #454545;
     border-radius: 5px;
     float: left;
-
   }
 
   :deep(.el-form-item__content) {
@@ -536,7 +504,6 @@ input:-webkit-autofill:active {
     color: $base-color-red;
   }
 
-
   input {
     height: 45px;
     padding-left: 45px;
@@ -548,8 +515,6 @@ input:-webkit-autofill:active {
     caret-color: #323d4e;
     border-radius: 20px;
   }
-
-
 }
 
 * {
@@ -601,12 +566,14 @@ body {
   margin-top: 3px;
   margin-left: 20%;
   text-align: center;
-  background: linear-gradient(244deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(0, 131, 242, 0.5) 40%,
-      #fff 50%,
-      rgba(0, 131, 242, 0.5) 60%,
-      rgba(0, 131, 242, 0) 100%);
+  background: linear-gradient(
+    244deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 131, 242, 0.5) 40%,
+    #fff 50%,
+    rgba(0, 131, 242, 0.5) 60%,
+    rgba(0, 131, 242, 0) 100%
+  );
   box-shadow: 0 10px 55px 2px rgb(0 131 242 / 25%);
 }
 

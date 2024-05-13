@@ -2,85 +2,51 @@
  * @Author: xiaoHao
  */
 
-
-
 import { createRouter, createWebHistory } from "vue-router";
- import Layout from "@/layouts/index.vue" ;
- import setting from '@/config/settings.js';
-import {vueRouter} from './global'
-
-
+import Layout from "@/layouts/index.vue";
+import setting from "@/config/settings.js";
+import { vueRouter } from "./global";
 
 // 公共路由
 export const constantRoutes = [
   {
-    path: '/redirect',
-    component: Layout,
+    path: "/login",
+    component: () => import("@/views/login/index.vue"),
     hidden: true,
-    children: [
-      {
-        path: '/redirect/:path(.*)',
-        component: (resolve:any) => import("@/views/redirect.vue",resolve),
-      }
-    ]
+  },
+  // 数据大屏
+  {
+    path: "/SystemView",
+    component: () => import("@/views/pages/systemView/index.vue"),
+    hidden: true,
   },
   {
-    path: '/login',
-    component: () => import("@/views/login/index.vue"),
-    hidden: true
+    path: "/404",
+    component: (resolve: any) => import("@/views/status/404.vue"),
+    hidden: true,
   },
   {
-    path: '/system',
-    component: () => import("@/views/login/index.vue"),
-    hidden: true
-  },
-  {
-    path: '/404',
-    component: (resolve:any) => import("@/views/status/404.vue"),
-    hidden: true
-  },
-  // {
-  //   path: '/401',
-  //   component: (resolve:any) => import("@/views/staus/401.vue"),
-  //   hidden: true
-  // },
-  {
-    path: '/API',
-    component: (resolve:any) => require('@/views/BasicInformation/APIInterface/index'),
-    hidden: true
-  },
-  {
-    path: '/SystemReg',
-    component: (resolve:any) => require('@/views/system/SystemReg/index'),
-    hidden: true
-  },
-  {
-    path: '/',
-    component: () => import("@/views/login/index.vue"),
-    hidden: true
-  },
-  {
-    path: '',
+    path: "",
     component: Layout,
-    redirect: 'index',
+    redirect: "index",
     children: [
       {
-        path: 'index',
-        component: (resolve:any) => import("@/views/index/index.vue"),
-        // component: (resolve:any) => require('@/views/index/index'),
-        name: '首页',
-        meta: { title: '首页', icon: '#icon-shouye', noCache: true, affix: true }
+        path: "index",
+        component: (resolve: any) => import("@/views/index/index.vue"),
+        // component: (resolve:any) => require("@/views/index/index"),
+        name: "首页",
+        meta: { title: "首页", icon: "#icon-shouye", noCache: true, affix: true }
       },
-      ...vueRouter()
-      
-    ]
+      ...vueRouter(),
+    ],
   },
-]
+
+];
+
 
 const router = createRouter({
   // import.meta.env.BASE_URL
   history: createWebHistory(setting.publicPath),
-  
   routes: constantRoutes,
   // [
   //   {
@@ -93,5 +59,11 @@ const router = createRouter({
   //   },
   // ],
 });
+/**
+ * 重置路由
+ */
+export function resetRouter() {
+  router.replace({ path: "/login" });
+}
 
 export default router;

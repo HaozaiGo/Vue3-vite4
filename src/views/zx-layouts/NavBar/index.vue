@@ -48,45 +48,61 @@
         </el-menu> -->
 
         <div class="topBg">
-          <span style="
-                          color: #fff;
-                          float: left;
-                          font-size: 21px;
-                          margin-left: -10px;
-                          line-height: 43px;
-                        ">
-            <img src="@/assets/img/shuidian/headerLogo.png" alt="" style="width: 50px; vertical-align: sub" />
-            水电综合计费监管系统
+          <span
+            style="
+              color: #fff;
+              float: left;
+              font-size: 21px;
+              margin-left: 20px;
+              line-height: 43px;
+            "
+          >
+            <img
+              style="width: 32px; vertical-align: middle; margin-right: 5px"
+              src="@/assets/img/login_images/KTJ_Logo.png"
+              alt=""
+            />
+            魁腾蛟后台管理系统
           </span>
         </div>
-
-
       </el-col>
       <el-col :xs="16" :sm="14" :md="14" :lg="14" :xl="14" style="float: right">
         <div class="right-panel">
-          <span class="auth" v-show="sysAuthStatusVO.sysAuthStatus != 1" @click="toRegister">
+          <span
+            class="auth"
+            v-show="sysAuthStatusVO.sysAuthStatus != 1"
+            @click="toRegister"
+          >
             <i style="font-size: 19px" class="el-icon-warning"></i>
             <span>{{ sysAuthStatusVO.message }}</span>
           </span>
-          <span style="margin-right: 11px; color: #fff; cursor: pointer" @click="refreshRoute">
+          <span
+            style="margin-right: 11px; color: #fff; cursor: pointer"
+            @click="refreshRoute"
+          >
             <!-- <vab-icon title="重载所有路由" :pulse="pulse" :icon="['fas', 'redo']" /> -->
             <el-icon><Refresh /></el-icon>
-            <span>刷新</span>
+            <span>重载</span>
           </span>
 
-          <div :title="'警告'" style="cursor: pointer" class="warning" @click="handleShowAlarm">
-            <el-icon><Bell /></el-icon>
-           
-              <span style="color: #fff">告警
-                <span style="color: #f56c6c">({{ windowAlarmListLength }})</span>
-              </span>
-           
+          <div
+            :title="'总览'"
+            style="cursor: pointer"
+            class="warning"
+            @click="handleShowBigView"
+          >
+            <el-icon style="transform: translateY(-2px)"><View /></el-icon>
+            <span style="color: #fff">总览 </span>
           </div>
-          <div :title="'收藏'" style="cursor: pointer;margin-left: 10px;" class="warning" @click="handleShowCollection">
+          <div
+            :title="'收藏'"
+            style="cursor: pointer; margin-left: 10px"
+            class="warning"
+            @click="handleShowCollection"
+          >
             <el-icon><Memo /></el-icon>
-            
-              <span style="color: #fff">收藏</span>
-          
+
+            <span style="color: #fff">收藏</span>
           </div>
           <avatar />
           <!--  <vab-icon
@@ -98,7 +114,13 @@
       </el-col>
     </el-row>
     <!-- 最新告警框 -->
-    <el-drawer title="我是标题" v-model="showAlarm" :with-header="false" style="top: 45px; z-index: 8888" size="25%">
+    <el-drawer
+      title="我是标题"
+      v-model="showAlarm"
+      :with-header="false"
+      style="top: 45px; z-index: 8888"
+      size="25%"
+    >
       <div class="alarmContent">
         <div class="flex">
           <span class="alarmStaus">告警概况</span>
@@ -119,10 +141,18 @@
         <div class="flex-sb alarmRow2">
           <el-form :inline="true">
             <el-form-item style="margin-bottom: 0px">
-              <el-input v-model="alarmSearch" placeholder="需要查找的设备编号" />
+              <el-input
+                v-model="alarmSearch"
+                placeholder="需要查找的设备编号"
+              />
             </el-form-item>
             <el-form-item style="margin-bottom: 0px">
-              <el-button type="primary" size="mini" icon="iconfont iconsousuo" @click="query">
+              <el-button
+                type="primary"
+                size="mini"
+                icon="iconfont iconsousuo"
+                @click="query"
+              >
                 查询
               </el-button>
             </el-form-item>
@@ -138,7 +168,11 @@
         </div>
         <!-- item -->
         <div class="boxOfItem" id="listBox">
-          <div class="alarmItem" v-for="(item, index) in windowAlarmList" :key="index">
+          <div
+            class="alarmItem"
+            v-for="(item, index) in windowAlarmList"
+            :key="index"
+          >
             <div class="" @click="handleLinkTo(item)">
               <div>
                 <span class="alarmTag">严重</span>
@@ -151,13 +185,20 @@
                 </span>
               </div>
               <div class="row2 flex">
-                <el-tooltip class="item" effect="dark" :content="item.meterAddr" placement="bottom">
-                  <div style="
-                              flex: 1;
-                              white-space: nowrap;
-                              overflow: hidden;
-                              text-overflow: ellipsis;
-                            ">
+                <el-tooltip
+                  class="item"
+                  effect="dark"
+                  :content="item.meterAddr"
+                  placement="bottom"
+                >
+                  <div
+                    style="
+                      flex: 1;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                    "
+                  >
                     仪表地址:{{ item.meterAddr }}
                   </div>
                 </el-tooltip>
@@ -166,14 +207,22 @@
                 </div>
               </div>
               <div class="row3 flex">
-                <span style="flex: 1" class="online">仪表型号:{{ item.meterModelCode }}</span><span style="flex: 1"
-                  class="online">采集器:{{ item.collectorUniqueCode }}
+                <span style="flex: 1" class="online"
+                  >仪表型号:{{ item.meterModelCode }}</span
+                ><span style="flex: 1" class="online"
+                  >采集器:{{ item.collectorUniqueCode }}
                   {{
                     item.commBranch ? "(" + item.commBranch + ")" : "--"
-                  }}</span>
+                  }}</span
+                >
               </div>
               <div class="row4">
-                <el-tooltip class="item" effect="dark" :content="item.remark" placement="bottom">
+                <el-tooltip
+                  class="item"
+                  effect="dark"
+                  :content="item.remark"
+                  placement="bottom"
+                >
                   <span style="flex: 1">详细描述:{{ item.remark }}</span>
                 </el-tooltip>
               </div>
@@ -182,83 +231,37 @@
         </div>
       </div>
     </el-drawer>
-
-    <!-- 上一代告警 2022-2 更新 -->
-    <div class="alarmDrawer" @mouseover="mouseover" @mouseleave="mouseLeave" v-if="false">
-      <div class="alarmWidth">
-        <!-- v-show="showAlarm" -->
-        <div class="topSetting">
-          <el-button type="primary" icon="iconfont iconbaojingshezhi" @click="editAlarm">
-            告警设置
-          </el-button>
-
-          <div class="rightBottom">
-            <el-checkbox v-model="checkAll" :indeterminate="isIndeterminate" style="margin-right: 10px"
-              @change="handleCheckAllChange">
-              全选
-            </el-checkbox>
-
-            <el-button type="success" plain icon="iconfont iconjiechubangding" @click="clearAlarmStatusBatch">
-              批量解除
-            </el-button>
-          </div>
-        </div>
-
-        <!-- 搜索告警类型 -->
-        <div class="searchAlarm">
-          <el-form :inline="true">
-            <el-form-item>
-              <el-input v-model="alarmSearch" placeholder="需要查找的水表编号" />
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" size="mini" icon="iconfont iconsousuo" @click="query">
-                查询
-              </el-button>
-            </el-form-item>
-          </el-form>
-        </div>
-
-        <!-- 异常过多 -->
-        <div v-if="windowAlarmList.length > 100" class="tipAlarm">
-          告警数据过多，请尽快处理
-        </div>
-        <!-- warnList -->
-        <div v-for="(item, index) in windowAlarmList" :key="index" class="text item">
-          <!-- item -->
-          <div class="everyItem">
-            <div class="itemTop">
-              <el-checkbox-group v-model="checkedAlarm" @change="handleCheckedAlarmChange">
-                <el-checkbox :label="item">
-                  <span class="alarmTypeText">{{
-                    item.alarmTypeDictText
-                  }}</span>
-                </el-checkbox>
-              </el-checkbox-group>
-              <el-button type="success" icon="iconfont iconjiechubangding" plain @click="clearAlarmStatus(item)">
-                解除
-              </el-button>
-            </div>
-            <div>
-              <p>编号：{{ item.waterMeterNumber }}</p>
-              <p>名称：{{ item.waterMeterName }}</p>
-              <p>时间：{{ item.happenTime }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- 删除告警弹框 -->
-    <ake-delete-dialog message="确认永久解除？" @delete="deleteAlarmData" :dialogDelete="dialogDelete"
-      @close="dialogAlarmDataNoForever" @cancel="dialogCancel"></ake-delete-dialog>
+    <ake-delete-dialog
+      message="确认永久解除？"
+      @delete="deleteAlarmData"
+      :dialogDelete="dialogDelete"
+      @close="dialogAlarmDataNoForever"
+      @cancel="dialogCancel"
+    ></ake-delete-dialog>
     <!--收藏 -->
-    <el-drawer title="收藏" :visible.sync="showCollection" :with-header="false" style="top: 45px" size="100px">
+    <el-drawer
+      title="收藏"
+      :visible.sync="showCollection"
+      :with-header="false"
+      style="top: 45px"
+      size="100px"
+    >
       <div class="collection_top">我的收藏</div>
-      <div style="
-                  overflow: hidden;
-                  overflow-y: auto;
-                  border: 1px solid rgba(214, 214, 214, 1);
-                " :style="{ height: OverallHeight + 200 + 'px' }">
-        <div class="collection" v-for="(item, index) in collection" @click="goLink(item)" :key="index">
+      <div
+        style="
+          overflow: hidden;
+          overflow-y: auto;
+          border: 1px solid rgba(214, 214, 214, 1);
+        "
+        :style="{ height: OverallHeight + 200 + 'px' }"
+      >
+        <div
+          class="collection"
+          v-for="(item, index) in collection"
+          @click="goLink(item)"
+          :key="index"
+        >
           <div class="collection_div">
             <svg class="icon indexIcon">
               <use :xlink:href="item.meta.icon"></use>
@@ -269,11 +272,21 @@
       </div>
     </el-drawer>
     <!-- 设置告警 -->
-    <el-dialog v-dialogDrag title="告警设置" :visible.sync="dialogVisible" width="25%">
+    <el-dialog
+      v-dialogDrag
+      title="告警设置"
+      :visible.sync="dialogVisible"
+      width="25%"
+    >
       <div style="padding: 0 40px">
         <el-form>
           <el-form-item>
-            <el-switch v-model="setAlarm.voiceStatus" active-text="开启语音" inactive-text="关闭语音" active-color="#13ce66" />
+            <el-switch
+              v-model="setAlarm.voiceStatus"
+              active-text="开启语音"
+              inactive-text="关闭语音"
+              active-color="#13ce66"
+            />
           </el-form-item>
           <el-form-item label="是否弹幕">
             <el-radio v-model="setAlarm.showWindowStatus" :label="1">
@@ -284,16 +297,34 @@
             </el-radio>
           </el-form-item>
           <el-form-item label="告警间隔">
-            <el-select v-model="setAlarm.voiceTimeInterval" placeholder="请选择">
-              <el-option v-for="item in timeOptions" :key="item.dictValue" :label="item.dictLabel"
-                :value="item.dictValue" />
+            <el-select
+              v-model="setAlarm.voiceTimeInterval"
+              placeholder="请选择"
+            >
+              <el-option
+                v-for="item in timeOptions"
+                :key="item.dictValue"
+                :label="item.dictLabel"
+                :value="item.dictValue"
+              />
             </el-select>
           </el-form-item>
         </el-form>
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false" type="danger" icon="iconfont iconquxiao" plain>取 消</el-button>
-        <el-button type="primary" icon="iconfont iconbianji" @click="handleUpLoadSetting">确 定</el-button>
+        <el-button
+          @click="dialogVisible = false"
+          type="danger"
+          icon="iconfont iconquxiao"
+          plain
+          >取 消</el-button
+        >
+        <el-button
+          type="primary"
+          icon="iconfont iconbianji"
+          @click="handleUpLoadSetting"
+          >确 定</el-button
+        >
       </span>
     </el-dialog>
 
@@ -301,23 +332,13 @@
   </div>
 </template>
 <script>
-
 import { getRouterList, getFavorites } from "@/api/common/router.js";
 import { Avatar } from "@/layouts/components/index.js";
 import router from "@/router/index.ts";
-import {
-  getWindowAlarm,
-  cancelOneAlarm,
-  getAlarmSetting,
-  getAlarmSettingTime,
-  upLoadSetting,
-} from "@/api/project/shuidian/alarmWatch.js";
-import { getSysAuthInfo } from "@/api/project/lingshi/apiTest.js";
 export default {
   name: "NavBar",
   components: {
     Avatar,
-
   },
   data() {
     return {
@@ -374,63 +395,18 @@ export default {
     setTime: function () {
       return this.setAlarm.voiceTimeInterval + "分钟";
     },
-
   },
   watch: {
     $route: {
-      handler(route) { },
+      handler(route) {},
     },
-    OverallHeight(val) { },
   },
-  destroyed() {
-    clearInterval(this.timer);
-  },
-  mounted() {
-    this.getAlarmConfig();
 
-    setTimeout(() => {
-      this.getWindowAlarmList();
-      setInterval(() => {
-        this.getWindowAlarmList();
-      }, 60000 * parseInt(this.setAlarm.voiceTimeInterval || 5));
-    }, 5000);
-  },
-  created() {
-    this.timer = setInterval(() => {
-      this.colorTheme = "mrbs-white";
-    }, 1000);
-
-    // getRouterList().then((res) => {
-    //   this.routerList = res.data;
-    //   var num = 0;
-    //   this.routerList.forEach((item) => {
-    //     if (item.children != undefined && item.children.length > num) {
-    //       num = item.children.length;
-    //     }
-    //   });
-    //   this.leftmenuList = res.data[0].children;
-
-    //   this.rightmenuList = this.leftmenuList[0].children;
-    //   this.rightmenuList1 = this.leftmenuList[0];
-    //   this.menuList = num;
-    //   if (this.rightmenuList == undefined) {
-    //     this.height = this.leftmenuList.length;
-    //     return;
-    //   }
-    //   this.rightmenuList.forEach((item) => {
-    //     if (item.children != undefined && item.children.length > this.height) {
-    //       this.height = item.children.length;
-    //     }
-    //   });
-    //   setTimeout(() => {
-    //     // document.getElementsByClassName('menu-h')[0].style.backgroundColor='#424f64'
-    //     document
-    //       .getElementsByClassName("menu-h")[0]
-    //       .getElementsByClassName("menu-h1")[0].className = "menu-h1 is-active";
-    //   }, 500);
-    // });
-  },
+  created() {},
   methods: {
+    handleShowBigView() {
+      this.$router.push("/SystemView");
+    },
     handleLinkTo(item) {
       // console.log(item);
       let alarmType = item.alarmType % 100;
@@ -523,7 +499,7 @@ export default {
         // document.getElementsByClassName('menu-h')[index].style.backgroundColor='#424f64'
         document
           .getElementsByClassName("menu-h")
-        [index].getElementsByClassName("menu-h1")[0].className =
+          [index].getElementsByClassName("menu-h1")[0].className =
           "menu-h1 is-active";
         if (item.children != undefined) {
           this.leftmenuList = item.children;
@@ -595,50 +571,6 @@ export default {
       }
       this.defaultOpenedsArray = [];
     },
-    handleOpen(key, keyPath) {
-      if (this.index != 999) {
-        this.getMenu(this.item, this.index);
-      }
-    },
-    handleSelect(key, keyPath) {
-      let layoutTemp = {
-        children: [],
-        component: "Layout",
-        meta: [{ icon: "#", title: "业主资料" }],
-        path: "",
-      };
-      for (let i = 0; i < this.leftmenuList[key].children.length; i++) {
-        if (this.leftmenuList[key].children[i].component !== "Layout") {
-          let temp = JSON.parse(
-            JSON.stringify(this.leftmenuList[key].children[i])
-          );
-          this.leftmenuList[key].children[i] = JSON.parse(
-            JSON.stringify(layoutTemp)
-          );
-          this.leftmenuList[key].children[i].children = JSON.parse(
-            JSON.stringify([temp])
-          );
-        }
-      }
-      this.rightmenuList = this.leftmenuList[key].children;
-      this.rightmenuList1 = this.leftmenuList[key];
-      if (this.rightmenuList == undefined) {
-        this.height = this.leftmenuList.length;
-        return;
-      }
-
-      this.rightmenuList.forEach((item) => {
-        if (item.children != undefined && item.children.length > this.height) {
-          this.height = item.children.length;
-        }
-      });
-    },
-    goSystem() {
-      this.$router.push("/System");
-    },
-    handleCollapse() {
-      // this.$store.dispatch("settings/changeCollapse");
-    },
     async refreshRoute() {
       this.$baseEventBus.$emit("reloadRouterView");
       this.pulse = true;
@@ -646,32 +578,24 @@ export default {
         this.pulse = false;
       }, 1000);
     },
-    handleShowAlarm() {
-      this.showAlarm = !this.showAlarm;
-      if (this.showAlarm == true) {
-        this.query();
-      }
-    },
     handleShowCollection() {
       this.showCollection = !this.showCollection;
       getFavorites().then((res) => {
         this.collection = res.data;
       });
     },
-    handleCloseDrawer() { },
+    handleCloseDrawer() {},
     // 提交解除按钮
     deleteAlarmData() {
       this.checkedAlarm.forEach((item) => {
         item.isAlarm = 1;
       });
-      this.cancelAlarmMethod(...this.checkedAlarm);
       this.dialogDelete = false;
     },
     dialogAlarmDataNoForever() {
       this.checkedAlarm.forEach((item) => {
         item.isAlarm = 0;
       });
-      this.cancelAlarmMethod(...this.checkedAlarm);
       this.dialogDelete = false;
     },
     query() {
@@ -683,226 +607,6 @@ export default {
         pageNum: this.alarmListIndex,
         meterCode: this.alarmSearch,
       };
-      getWindowAlarm(body).then((res) => {
-        this.windowAlarmList = res.data.alarmWindowTableList;
-        this.listTotal = this.windowAlarmListLength;
-
-        if (this.windowAlarmList == null) {
-          this.windowAlarmList = [];
-        }
-        this.$nextTick(() => {
-          this.scrollMethod();
-        });
-      });
-    },
-    //告警获取
-    getWindowAlarmList() {
-      let body = {
-        pageSize: 20,
-        pageNum: this.alarmListIndex,
-      };
-      getWindowAlarm(body).then((res) => {
-        this.voiceList = res.data;
-
-        this.windowAlarmListLength = res.data.alarmTotal;
-        // this.query();
-        // if (this.windowAlarmList == null) {
-        //   this.windowAlarmList = [];
-        // }
-
-        let temp = [];
-        let errorMsg = [];
-        //水量递减
-        if (this.voiceList.declineVoice) {
-          temp.push(this.publicPath + "static/WaterDescendAlarm.mp3");
-          errorMsg.push("水量递减告警");
-        }
-        //流量上限-水表-瞬时流量上限语音
-        if (this.voiceList.flowUpperVoice) {
-          temp.push(this.publicPath + "static/FlowUpLimitAlarm.mp3");
-          errorMsg.push("水表流量上限告警");
-        }
-        // 热表流量上限
-        if (this.voiceList.heatFlowUpperVoice) {
-          temp.push(this.publicPath + "static/FlowUpLimitAlarm.mp3");
-          errorMsg.push("热表流量上限告警");
-        }
-        // 离线
-        if (this.voiceList.offLineVoice) {
-          temp.push(this.publicPath + "static/MeterOfflineAlarm.mp3");
-          errorMsg.push("离线告警");
-        }
-        // 水倒流
-        if (this.voiceList.consumptionVoice) {
-          temp.push(this.publicPath + "static/WaterBackflowAlarm.mp3");
-          errorMsg.push("水倒流告警");
-        }
-        // 电池电压低
-        if (this.voiceList.voltageLowerVoice) {
-          temp.push(this.publicPath + "static/LowVoltageAlarm.mp3");
-          errorMsg.push("电池电压低告警");
-        }
-        // 夜间用水
-        if (this.voiceList.nightVoice) {
-          temp.push(this.publicPath + "static/NightWaterAlarm.mp3");
-          errorMsg.push("夜间用水告警");
-        }
-        // 零水量
-        if (this.voiceList.zeroVoice) {
-          temp.push(this.publicPath + "static/ZeroWaterAlarm.mp3");
-          errorMsg.push("零水量告警");
-        }
-        // 突然用水
-        if (this.voiceList.suddentVoice) {
-          temp.push(this.publicPath + "static/SuddenWaterAlarm.mp3");
-          errorMsg.push("突然用水告警");
-        }
-        // 压力上限
-        if (this.voiceList.pressUpperVoice) {
-          temp.push(this.publicPath + "static/PressureUpLimitAlarm.mp3");
-          errorMsg.push("压力上限告警");
-        }
-        // 压力下限
-        if (this.voiceList.pressLowerVoice) {
-          temp.push(this.publicPath + "static/PressureDownLimitAlarm.mp3");
-          errorMsg.push("压力下限告警");
-        }
-        // 时钟异动
-        if (this.voiceList.timeBackVoice) {
-          temp.push(this.publicPath + "static/ClockChangeAlarm.mp3");
-          errorMsg.push("时钟异动告警");
-        }
-        // 读数回退
-        if (this.voiceList.dataBackVoice) {
-          temp.push(this.publicPath + "static/DataBackAlarm.mp3");
-          errorMsg.push("读数回退告警");
-        }
-        //其他数据异常
-        if (this.voiceList.othersVoice) {
-          temp.push(this.publicPath + "static/OtherAlarm.mp3");
-          errorMsg.push("其他数据异常告警");
-        }
-        //电池电量低
-        if (this.voiceList.powerLowerVoice) {
-          temp.push(this.publicPath + "static/LowBatteryAlarm.mp3");
-          errorMsg.push("电池电量低告警");
-        }
-        //流量计空管
-        if (this.voiceList.emptyPipeVoice) {
-          temp.push(this.publicPath + "static/MeterBlankPipeAlarm.mp3");
-          errorMsg.push("流量计空管告警");
-        }
-        // 无抄表数据
-        if (this.voiceList.noDataVoice) {
-          temp.push(this.publicPath + "static/NoDataAlarm.mp3");
-          errorMsg.push("无抄表数据告警");
-        }
-        // 热表-热功率上限
-        if (this.voiceList.thermalPowerUpperVoice) {
-          temp.push(this.publicPath + "static/powerUpperAlarm.mp3");
-          errorMsg.push("热功率上限告警");
-        }
-
-        if (temp.length && this.setAlarm.voiceStatus) {
-          var audio = this.$refs.audioPlay;
-          var play = () => {
-            let src = temp.splice(0, 1);
-            audio.src = src;
-            audio.play();
-            ended();
-          };
-          //是否播放完毕
-          var ended = () => {
-            audio.onended = () => {
-              if (temp.length) {
-                play();
-              }
-            };
-          };
-          play();
-        }
-        if (errorMsg.length && Boolean(this.setAlarm.showWindowStatus)) {
-          let that = this;
-          for (let i = 0; i < errorMsg.length; i++) {
-            const element = errorMsg[i];
-            setTimeout(() => {
-              that.$notify({
-                title: "告警",
-                message: element,
-                type: "warning",
-                position: "bottom-right",
-                duration: 2000,
-              });
-            }, i * 2500);
-          }
-        }
-      });
-    },
-    // 下拉加载
-    async joinList() {
-      let body = {
-        pageSize: 20,
-        pageNum: this.alarmListIndex,
-        meterCode: this.alarmSearch,
-      };
-
-      const res = await getWindowAlarm(body);
-      this.windowAlarmList = this.windowAlarmList.concat(
-        res.data.alarmWindowTableList
-      );
-    },
-    // 监听滚动条
-    scrollMethod() {
-      this.$nextTick(() => {
-        this.scrollList = document.getElementById("listBox");
-        // console.log("scrollList", this.scrollList);
-
-        this.scrollList.addEventListener("scroll", () => {
-          let scrollTop = this.scrollList.scrollTop;
-          let scrollHeight = this.scrollList.scrollHeight;
-          let scrollObjHeight = scrollHeight - scrollTop;
-          if (scrollObjHeight <= 1200 && this.allowScroll) {
-            if (
-              Number(this.listTotal) === Number(this.windowAlarmList.length)
-            ) {
-              // console.log("已经是最后数据了");
-              this.allowScroll = true;
-
-              return;
-            }
-            setTimeout(() => {
-              this.scrollList.scrollTop = scrollTop - 200;
-              this.alarmListIndex += 1;
-
-              this.joinList();
-
-              console.log("下拉加载");
-              this.allowScroll = true;
-            }, 800);
-
-            this.allowScroll = false;
-          }
-        });
-      });
-    },
-    //获取当前告警设置
-    getAlarmConfig() {
-      getAlarmSetting().then((res) => {
-        if (res.data === null) {
-          this.setAlarm = {
-            voiceStatus: 0,
-            showWindowStatus: 0,
-            voiceTimeInterval: "5分钟",
-          };
-        } else {
-          this.setAlarm = res.data;
-          this.setAlarm.voiceStatus = Boolean(this.setAlarm.voiceStatus);
-          this.setAlarm.voiceTimeInterval = this.setTime;
-        }
-      });
-      getAlarmSettingTime().then((res) => {
-        this.timeOptions = res.data;
-      });
     },
     //告警全选
     handleCheckAllChange(val) {
@@ -912,30 +616,10 @@ export default {
     //批量告警取消
     clearAlarmStatusBatch() {
       this.dialogDelete = true;
-      // this.cancelAlarmMethod(...this.checkedAlarm);
     },
     //告警设置
     editAlarm() {
       this.dialogVisible = true;
-    },
-    //单个解除
-    clearAlarmStatus(item) {
-      this.cancelAlarmMethod(item);
-      this.$store.dispatch("alarm/increment");
-    },
-    //解除告警
-    cancelAlarmMethod(...body) {
-      cancelOneAlarm(body).then((res) => {
-        res.code === 0
-          ? this.$baseMessage(res.msg, "success")
-          : this.$baseMessage(res.msg, "error");
-        this.getWindowAlarmList();
-      });
-    },
-    // 多选grop
-    handleCheckedAlarmChange(value) {
-      let checkedCount = value.length;
-      this.checkAll = checkedCount === this.windowAlarmList.length;
     },
     //上传设置
     handleUpLoadSetting() {
@@ -943,24 +627,6 @@ export default {
         this.setAlarm.voiceTimeInterval
       );
       this.setAlarm.voiceStatus = this.setAlarm.voiceStatus + 0;
-      // if(this.setAlarm.voiceStatus ===null){
-      //   this.setAlarm.voiceStatus = 0;
-      // }
-      // if(this.setAlarm.showWindowStatus ===null){
-      //   this.setAlarm.showWindowStatus = 0;
-      // }
-      // if(this.setAlarm.voiceTimeInterval ===null){
-      //   this.setAlarm.voiceTimeInterval = 0;
-      // }
-      upLoadSetting(this.setAlarm).then((res) => {
-        res.code === 0
-          ? this.$baseMessage(res.msg, "success")
-          : this.$baseMessage(res.msg, "error");
-        this.getAlarmConfig(); //重新刷新获取配置
-
-        this.getWindowAlarmList();
-        this.dialogVisible = false;
-      });
     },
   },
 };
@@ -1098,11 +764,17 @@ export default {
   display: none;
 }
 
-.mrbs-white .nav-bar-container .el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
+.mrbs-white
+  .nav-bar-container
+  .el-menu--horizontal
+  .el-menu-item:not(.is-disabled):hover {
   background-color: #fff0 !important;
 }
 
-.mrbs-black .nav-bar-container .el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
+.mrbs-black
+  .nav-bar-container
+  .el-menu--horizontal
+  .el-menu-item:not(.is-disabled):hover {
   background-color: #fff0 !important;
 }
 
@@ -1114,7 +786,7 @@ export default {
   background-color: #fff0 !important;
 }
 
-.nav-bar-container .el-menu--horizontal>.el-submenu .el-submenu__title {
+.nav-bar-container .el-menu--horizontal > .el-submenu .el-submenu__title {
   line-height: 35px;
 }
 
@@ -1123,15 +795,21 @@ export default {
   background-color: #a7b8be00 !important;
 }
 
-.mrbs-white .nav-bar-container .el-menu--horizontal .el-menu-item:not(.is-disabled):focus {
+.mrbs-white
+  .nav-bar-container
+  .el-menu--horizontal
+  .el-menu-item:not(.is-disabled):focus {
   background-color: #fff0 !important;
 }
 
-.mrbs-white .nav-bar-container .el-menu--horizontal .el-menu-item:not(.is-disabled):active {
+.mrbs-white
+  .nav-bar-container
+  .el-menu--horizontal
+  .el-menu-item:not(.is-disabled):active {
   background-color: #fff0 !important;
 }
 
-.el-menu--horizontal>.el-submenu .el-submenu__title:hover {
+.el-menu--horizontal > .el-submenu .el-submenu__title:hover {
   background-color: #a7b8be00 !important;
 }
 </style>
@@ -1344,10 +1022,10 @@ li.el-menu-item.is-active.is-active {
 }
 
 .nav-bar-container {
-  
   margin-left: 0px;
   position: fixed;
-  left: 0;top: 0;
+  left: 0;
+  top: 0;
   right: 0;
   height: $base-nav-bar-height;
   padding-right: $base-padding;
@@ -1356,7 +1034,7 @@ li.el-menu-item.is-active.is-active {
   user-select: none;
   background: $base-color-white;
   box-shadow: $base-box-shadow;
-  z-index: 8888;
+  z-index: 100;
 
   .left-panel {
     height: $base-nav-bar-height;
@@ -1408,7 +1086,6 @@ li.el-menu-item.is-active.is-active {
     // .el-badge {
     //   margin-right: 15px;
     // }
-
   }
 }
 

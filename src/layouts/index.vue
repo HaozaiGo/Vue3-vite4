@@ -2,7 +2,7 @@
   <div class="vue-admin-beautiful-wrapper" :class="classObj">
     <!-- 水平布局 -->
     <div
-      v-if=" layout==='horizontal'"
+      v-if="layout === 'horizontal'"
       class="layout-container-horizontal"
       :class="{
         fixed: header === 'fixed',
@@ -38,7 +38,7 @@
         @click="handleFoldSideBar"
       />
       <side-bar></side-bar>
-      <div class="vab-main" :class="collapse ? 'is-collapse-main' : ''" :style="isIndex?`margin-left:75px`:`margin-left:190px`">
+      <div class="vab-main" :class="collapse ? 'is-collapse-main' : ''">
         <div :class="header === 'fixed' ? 'fixed-header' : ''">
           <nav-bar></nav-bar>
           <tags-bar v-if="tagsBar === 'true' || tagsBar === true" />
@@ -52,11 +52,17 @@
 
 <script>
 // import { AppMain, NavBar, SideBar, TagsBar, TopBar } from "./components/index.js";
-import {  NavBar, TopBar,SideBar,TagsBar,AppMain } from "./components/index.js";
+import {
+  NavBar,
+  TopBar,
+  SideBar,
+  TagsBar,
+  AppMain,
+} from "./components/index.js";
 import settings from "@/config/settings.js";
 import Media from "./mixin/Media";
-import { mapState } from 'pinia'
-import {baseSettings} from '@/stores/counter'
+import { mapState } from "pinia";
+import { baseSettings } from "@/stores/counter";
 export default {
   name: "Layout",
   components: {
@@ -69,13 +75,13 @@ export default {
   },
   mixins: [Media],
   data() {
-    return {};
+    return {
+      device: "",
+      layout: "",
+    };
   },
   computed: {
-
-    ...mapState(
-      baseSettings,['collapse','header','tagsBar']
-    ),
+    ...mapState(baseSettings, ["collapse", "header", "tagsBar"]),
     classObj() {
       return {
         mobile: this.device === "mobile",
@@ -87,8 +93,10 @@ export default {
       window.addEventListener(
         "storage",
         (e) => {
-          if (e.key === settings.tokenName || e.key === null) window.location.reload();
-          if (e.key === settings.tokenName && e.value === null) window.location.reload();
+          if (e.key === settings.tokenName || e.key === null)
+            window.location.reload();
+          if (e.key === settings.tokenName && e.value === null)
+            window.location.reload();
         },
         false
       );
@@ -96,9 +104,7 @@ export default {
       // console.log(this.tagsBar);
     });
   },
-  methods: {
- 
-  },
+  methods: {},
 };
 </script>
 
@@ -190,7 +196,6 @@ export default {
     }
 
     .vab-main {
-
       position: relative;
       top: $base-nav-bar-height;
       height: calc(100vh - $base-nav-bar-height);
@@ -198,14 +203,12 @@ export default {
       background: #f6f8f9;
       transition: $base-transition;
 
-
       &.is-collapse-main {
         margin-left: $base-left-menu-width-min;
 
-        :deep(.fixed-header){
-            left: 0px;
-            width: 100%;
-          
+        :deep(.fixed-header) {
+          left: 0px;
+          width: 100%;
         }
       }
     }
@@ -249,7 +252,7 @@ export default {
   .el-tabs__header
   .el-tabs__item.is-active {
   height: 38px !important;
-  color: #464645  !important;
+  color: #464645 !important;
   background: #273142 !important;
   background: #eff2f7 !important;
   border-radius: 2px 2px 0px 0px;

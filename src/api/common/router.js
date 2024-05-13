@@ -2,7 +2,7 @@ import request from "@/config/request.js";
 
 export function getRouterList(data) {
   return request({
-    url: "/mrbsservice/getRouters",
+    url: "/api/api/getRouters",
     method: "get",
   });
 }
